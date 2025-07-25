@@ -11,6 +11,23 @@ def setup_db_view(request):
     logs = []
     action = request.GET.get('action')  # No default action - user must choose
 
+    # Always check current database status
+    try:
+        user_count = User.objects.count()
+        email_count = Email.objects.count()
+        db_status = {
+            'user_count': user_count,
+            'email_count': email_count,
+            'has_data': user_count > 0 or email_count > 0
+        }
+    except Exception as e:
+        db_status = {
+            'user_count': 0,
+            'email_count': 0,
+            'has_data': False,
+            'error': str(e)
+        }
+
     # Only perform database operations if an action is specified
     if action:
         try:
@@ -82,12 +99,64 @@ def setup_db_view(request):
         except Exception as e:
             logs.append(f"Error during database operation: {str(e)}")
 
-    return render(request, 'setup-db.html', {'logs': logs, 'action': action})
+    # Update database status after any operations
+    try:
+        user_count = User.objects.count()
+        email_count = Email.objects.count()
+        db_status = {
+            'user_count': user_count,
+            'email_count': email_count,
+            'has_data': user_count > 0 or email_count > 0
+        }
+    except Exception as e:
+        db_status = {
+            'user_count': 0,
+            'email_count': 0,
+            'has_data': False,
+            'error': str(e)
+        }
+
+    return render(request, 'setup-db.html', {'logs': logs, 'action': action, 'db_status': db_status})
 
 def view_users(request):
     """View all users in the database"""
     users = User.objects.all()
     return render(request, 'view-users.html', {'users': users})
+
+def view_emails(request):
+    """View all emails in the database"""
+    emails = Email.objects.all()
+    return render(request, 'view-emails.html', {'emails': emails})
+
+def lab_error_based(request):
+    """Error-based SQL Injection Lab"""
+    result = None
+    error = None
+    query_executed = None
+    user_id = request.GET.get('id', '')
+    
+    if user_id:
+        try:
+            # INTENTIONALLY VULNERABLE: Direct string concatenation for educational purposes
+            # This creates an error-based SQL injection vulnerability
+            raw_query = f"SELECT username, password FROM {User._meta.db_table} WHERE id = {user_id}"
+            query_executed = raw_query
+            
+            with connection.cursor() as cursor:
+                cursor.execute(raw_query)
+                result = cursor.fetchone()
+                
+        except Exception as e:
+            error = str(e)
+    
+    context = {
+        'user_id': user_id,
+        'result': result,
+        'error': error,
+        'query_executed': query_executed
+    }
+    
+    return render(request, 'lab-error-based.html', context)
 
 def reset_db_view(request):
     """Reset database - clear all data and reset auto-increment counters"""

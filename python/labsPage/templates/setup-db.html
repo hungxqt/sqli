@@ -264,7 +264,11 @@
                 {% elif action == 'setup' %}
                 <p>Tables created and populated successfully</p>
                 {% else %}
-                <p>Ready for setup or reset operation</p>
+                    {% if db_status.has_data %}
+                    <p>Database contains data ({{ db_status.user_count|add:db_status.email_count }} records)</p>
+                    {% else %}
+                    <p>Database is empty - Ready for setup</p>
+                    {% endif %}
                 {% endif %}
             </div>
             <div class="info-card">
@@ -274,7 +278,7 @@
                 {% elif action == 'setup' %}
                 <p>13 test users with credentials</p>
                 {% else %}
-                <p>Awaiting action</p>
+                <p>{{ db_status.user_count }} users currently in database</p>
                 {% endif %}
             </div>
             <div class="info-card">
@@ -284,12 +288,12 @@
                 {% elif action == 'setup' %}
                 <p>8 email addresses for testing</p>
                 {% else %}
-                <p>Awaiting action</p>
+                <p>{{ db_status.email_count }} email records currently in database</p>
                 {% endif %}
             </div>
             <div class="info-card">
                 <h3>Framework</h3>
-                <p>Django 5.2.4 with MySQL</p>
+                <p>Django 5.2.4 with MySQL 9.1.0</p>
             </div>
         </div>
 
