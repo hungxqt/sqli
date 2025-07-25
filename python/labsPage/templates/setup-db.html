@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Setup - SQLi Labs Django</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 0;
+            border-bottom: 2px solid #333;
+        }
+
+        .welcome-text {
+            font-size: 32px;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .username {
+            color: #ff4444;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 68, 68, 0.5);
+        }
+
+        .title {
+            font-size: 28px;
+            color: #4CAF50;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+
+        .setup-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .setup-header {
+            color: #ffeb3b;
+            font-size: 24px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ffeb3b;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .setup-icon {
+            font-size: 28px;
+        }
+
+        .logs-container {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            padding: 20px;
+            border-left: 4px solid #4CAF50;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .log-entry {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .log-entry:last-child {
+            border-bottom: none;
+        }
+
+        .log-icon {
+            color: #4CAF50;
+            font-size: 18px;
+            min-width: 20px;
+        }
+
+        .log-text {
+            color: #e8f5e8;
+        }
+
+        .navigation {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(45deg, #2196F3, #21CBF3);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 0 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(33, 150, 243, 0.4);
+        }
+
+        .btn-home {
+            background: linear-gradient(45deg, #FF6B6B, #FF8E53);
+        }
+
+        .btn-home:hover {
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn-warning {
+            background: linear-gradient(45deg, #ff9800, #ff5722);
+        }
+
+        .btn-warning:hover {
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: #4CAF50;
+            border-radius: 50%;
+            margin-right: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .info-card h3 {
+            color: #4CAF50;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .info-card p {
+            color: #ccc;
+            font-size: 14px;
+        }
+
+        .scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        .scrollbar::-webkit-scrollbar-thumb {
+            background: #4CAF50;
+            border-radius: 4px;
+        }
+
+        .scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            {% if action == 'reset' %}
+            <div class="title">Database Reset Complete</div>
+            {% elif action == 'setup' %}
+            <div class="title">Database Setup Complete</div>
+            {% else %}
+            <div class="title">Database Management</div>
+            {% endif %}
+        </div>
+
+        <div class="setup-card">
+            <div class="setup-header">
+                <span class="setup-icon"></span>
+                {% if action == 'reset' %}
+                <span>Database Reset & Cleanup</span>
+                {% elif action == 'setup' %}
+                <span>Database Schema Setup & Data Population</span>
+                {% else %}
+                <span>Choose Database Action</span>
+                {% endif %}
+            </div>
+
+            {% if logs %}
+            <div class="logs-container scrollbar">
+                {% for log in logs %}
+                <div class="log-entry">
+                    <div class="status-indicator"></div>
+                    <div class="log-icon"></div>
+                    <div class="log-text">{{ log }}</div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="log-entry">
+                <div class="log-icon"></div>
+                {% if not action %}
+                <div class="log-text">Choose an action below to setup or reset the database.</div>
+                {% else %}
+                <div class="log-text">No setup logs available. Please run the setup process.</div>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>Database Status</h3>
+                {% if action == 'reset' %}
+                <p>Database cleared - All data removed</p>
+                {% elif action == 'setup' %}
+                <p>Tables created and populated successfully</p>
+                {% else %}
+                <p>Ready for setup or reset operation</p>
+                {% endif %}
+            </div>
+            <div class="info-card">
+                <h3>Users Table</h3>
+                {% if action == 'reset' %}
+                <p>0 users (cleared)</p>
+                {% elif action == 'setup' %}
+                <p>13 test users with credentials</p>
+                {% else %}
+                <p>Awaiting action</p>
+                {% endif %}
+            </div>
+            <div class="info-card">
+                <h3>Emails Table</h3>
+                {% if action == 'reset' %}
+                <p>0 email records (cleared)</p>
+                {% elif action == 'setup' %}
+                <p>8 email addresses for testing</p>
+                {% else %}
+                <p>Awaiting action</p>
+                {% endif %}
+            </div>
+            <div class="info-card">
+                <h3>Framework</h3>
+                <p>Django 5.2.4 with MySQL</p>
+            </div>
+        </div>
+
+        <div class="action-buttons" style="text-align: center; margin: 30px 0;">
+            <a href="/setup-db/?action=setup" class="btn">Setup Database</a>
+            <a href="/setup-db/?action=reset" class="btn btn-warning">Reset Database</a>
+        </div>
+
+        <div class="navigation">
+            <a href="/" class="btn btn-home">Back to Home</a>
+        </div>
+    </div>
+
+    <script>
+        // Add some interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate log entries on load
+            const logEntries = document.querySelectorAll('.log-entry');
+            logEntries.forEach((entry, index) => {
+                entry.style.opacity = '0';
+                entry.style.transform = 'translateX(-20px)';
+                setTimeout(() => {
+                    entry.style.transition = 'all 0.5s ease';
+                    entry.style.opacity = '1';
+                    entry.style.transform = 'translateX(0)';
+                }, index * 100);
+            });
+
+            // Add hover effects to cards
+            const cards = document.querySelectorAll('.info-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.transition = 'transform 0.3s ease';
+                    this.style.boxShadow = '0 5px 20px rgba(76, 175, 80, 0.2)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = 'none';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

