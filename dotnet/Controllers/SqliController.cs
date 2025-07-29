@@ -128,9 +128,9 @@ namespace dotnet.Controllers
                 var count = Convert.ToInt32(command.ExecuteScalar());
                 ViewData["Exists"] = count > 0;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                ViewData["Error"] = ex.Message;
+                ViewData["Exists"] = false;
             }
 
             return View();
