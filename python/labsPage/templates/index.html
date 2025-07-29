@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQLi Labs</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            max-width: 800px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            background-color: #f5f5f5; 
+        }
+        .container { 
+            background: white; 
+            padding: 30px; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+        }
+        h1 {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 30px;
+            font-weight: normal;
+        }
+        .lab-card {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .lab-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        .badge-union { background-color: #007bff; }
+        .badge-reflect { background-color: #fd7e14; }
+        .badge-boolean { background-color: #6f42c1; }
+        .badge-time { background-color: #e83e8c; }
+        
+        .lab-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .lab-description {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+        .start-lab-btn {
+            background-color: #dc3545;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+        }
+        .start-lab-btn:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SQLi Labs</h1>
+        
+        <div class="lab-card">
+            <div class="lab-badge badge-union">UNION</div>
+            <div class="lab-title">UNION-based SQL Injection</div>
+            <div class="lab-description">Extract data from multiple tables using UNION SELECT statements.</div>
+            <a href="/?type=union" class="start-lab-btn">Start Lab</a>
+        </div>
+
+        <div class="lab-card">
+            <div class="lab-badge badge-reflect">REFLECT</div>
+            <div class="lab-title">Error/Reflect-based SQL Injection</div>
+            <div class="lab-description">Use database errors and reflected output to extract information.</div>
+            <a href="/?type=reflect" class="start-lab-btn">Start Lab</a>
+        </div>
+
+        <div class="lab-card">
+            <div class="lab-badge badge-boolean">BOOLEAN</div>
+            <div class="lab-title">Boolean-based Blind SQL Injection</div>
+            <div class="lab-description">Extract data character by character using true/false responses.</div>
+            <a href="/?type=boolean" class="start-lab-btn">Start Lab</a>
+        </div>
+
+        <div class="lab-card">
+            <div class="lab-badge badge-time">TIME</div>
+            <div class="lab-title">Time-based Blind SQL Injection</div>
+            <div class="lab-description">Use database delays to confirm conditions.</div>
+            <a href="/?type=time" class="start-lab-btn">Start Lab</a>
+        </div>
+    </div>
+</body>
+</html>
