@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -35,7 +34,6 @@ public class BooleanServlet extends HttpServlet {
                 }
                 
             } catch (Exception e) {
-                // For boolean-based blind SQL injection, hide errors and just return "user not found"
                 exists = false;
             }
         }

@@ -18,7 +18,7 @@ app.use(express.static('public'));
 const dbConfig = {
     host: 'localhost',
     user: 'root',
-    password: '', // Try empty password first
+    password: '',
     database: 'nodejs',
     multipleStatements: true
 };

@@ -12,18 +12,9 @@ public class IndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        System.out.println("IndexServlet: doGet method called");
-        System.out.println("Request URI: " + request.getRequestURI());
-        System.out.println("Context Path: " + request.getContextPath());
-        
         try {
             request.getRequestDispatcher("/WEB-INF/views/index.jsp").forward(request, response);
-            System.out.println("Successfully forwarded to index.jsp");
         } catch (Exception e) {
-            System.out.println("Error forwarding to index.jsp: " + e.getMessage());
-            e.printStackTrace();
-            
-            // Fallback: write directly to response
             response.setContentType("text/html");
             response.getWriter().println("<h1>SQLi Labs - IndexServlet Working!</h1>");
             response.getWriter().println("<p>There was an issue loading the JSP view.</p>");

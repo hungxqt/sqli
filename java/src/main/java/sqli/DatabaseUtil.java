@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DatabaseUtil {
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/sqli_labs?useSSL=false&allowPublicKeyRetrieval=true";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/tomcat?useSSL=false&allowPublicKeyRetrieval=true";
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "";
     
@@ -24,10 +24,12 @@ public class DatabaseUtil {
     }
     
     private static void initializeDatabase() {
-        try (Connection conn = getConnection();
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/?useSSL=false&allowPublicKeyRetrieval=true", DB_USER, DB_PASSWORD);
              Statement stmt = conn.createStatement()) {
             
-            // Create users table if not exists
+            stmt.execute("CREATE DATABASE IF NOT EXISTS tomcat");
+            stmt.execute("USE tomcat");
+            
             String createTable = "CREATE TABLE IF NOT EXISTS users (" +
                 "id INT AUTO_INCREMENT PRIMARY KEY, " +
                 "username VARCHAR(255) NOT NULL, " +
@@ -36,11 +38,9 @@ public class DatabaseUtil {
                 ")";
             stmt.execute(createTable);
             
-            // Check if data exists
             var rs = stmt.executeQuery("SELECT COUNT(*) FROM users");
             rs.next();
             if (rs.getInt(1) == 0) {
-                // Insert seed data
                 String[] insertData = {
                     "INSERT INTO users (username, password) VALUES ('Dumb', 'Dumb')",
                     "INSERT INTO users (username, password) VALUES ('Angelina', 'I-kill-you')",

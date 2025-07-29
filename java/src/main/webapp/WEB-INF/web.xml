@@ -7,7 +7,10 @@
     
     <display-name>SQL Injection Labs</display-name>
     
-    <!-- Servlet Declarations -->
+    <welcome-file-list>
+        <welcome-file>home</welcome-file>
+    </welcome-file-list>
+    
     <servlet>
         <servlet-name>IndexServlet</servlet-name>
         <servlet-class>sqli.servlets.IndexServlet</servlet-class>
@@ -29,10 +32,13 @@
         <servlet-class>sqli.servlets.TimeServlet</servlet-class>
     </servlet>
     
-    <!-- Servlet Mappings -->
     <servlet-mapping>
         <servlet-name>IndexServlet</servlet-name>
         <url-pattern>/</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>IndexServlet</servlet-name>
+        <url-pattern>/home</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UnionServlet</servlet-name>
