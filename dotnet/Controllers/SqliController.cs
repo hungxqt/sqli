@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Data.Sqlite;
+using MySql.Data.MySqlClient;
 using dotnet.Models;
 using System.Diagnostics;
 
@@ -12,7 +12,7 @@ namespace dotnet.Controllers
         public SqliController(IConfiguration configuration)
         {
             _connectionString = configuration.GetConnectionString("DefaultConnection") ?? 
-                              "Data Source=sqli.db";
+                              "Server=localhost;Database=dotnet;Uid=root;Pwd=;";
         }
 
         // Main index page
@@ -39,9 +39,9 @@ namespace dotnet.Controllers
 
             try
             {
-                using var connection = new SqliteConnection(_connectionString);
+                using var connection = new MySqlConnection(_connectionString);
                 connection.Open();
-                using var command = new SqliteCommand(query, connection);
+                using var command = new MySqlCommand(query, connection);
                 using var reader = command.ExecuteReader();
                 
                 var users = new List<dynamic>();
@@ -82,9 +82,9 @@ namespace dotnet.Controllers
 
             try
             {
-                using var connection = new SqliteConnection(_connectionString);
+                using var connection = new MySqlConnection(_connectionString);
                 connection.Open();
-                using var command = new SqliteCommand(query, connection);
+                using var command = new MySqlCommand(query, connection);
                 var result = command.ExecuteScalar();
                 
                 if (result != null)
@@ -122,9 +122,9 @@ namespace dotnet.Controllers
 
             try
             {
-                using var connection = new SqliteConnection(_connectionString);
+                using var connection = new MySqlConnection(_connectionString);
                 connection.Open();
-                using var command = new SqliteCommand(query, connection);
+                using var command = new MySqlCommand(query, connection);
                 var count = Convert.ToInt32(command.ExecuteScalar());
                 ViewData["Exists"] = count > 0;
             }
@@ -156,9 +156,9 @@ namespace dotnet.Controllers
             
             try
             {
-                using var connection = new SqliteConnection(_connectionString);
+                using var connection = new MySqlConnection(_connectionString);
                 connection.Open();
-                using var command = new SqliteCommand(query, connection);
+                using var command = new MySqlCommand(query, connection);
                 command.ExecuteScalar();
             }
             catch (Exception)

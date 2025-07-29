@@ -6,9 +6,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-// Add SQLite database
+// Add MySQL database
 builder.Services.AddDbContext<SqliDbContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection") ?? "Data Source=sqli.db"));
+    options.UseMySql(
+        builder.Configuration.GetConnectionString("DefaultConnection") ?? 
+        "Server=localhost;Database=sqli_labs;Uid=root;Pwd=;",
+        ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection") ?? 
+        "Server=localhost;Database=sqli_labs;Uid=root;Pwd=;")));
 
 var app = builder.Build();
 
