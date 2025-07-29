@@ -47,7 +47,8 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',  # Commented out to allow iframe embedding
+    'labsPage.middleware.IframeEmbeddingMiddleware',  # Custom middleware for iframe control
 ]
 
 ROOT_URLCONF = 'python.urls'
@@ -128,3 +129,37 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Iframe Embedding Configuration
+# https://docs.djangoproject.com/en/5.2/ref/clickjacking/
+
+# Method 1: Disable X-Frame-Options completely (current setup)
+X_FRAME_OPTIONS = None  # Disables X-Frame-Options header, allows embedding from any site
+
+# Method 2: Use custom middleware with Content Security Policy
+# The IframeEmbeddingMiddleware provides more granular control using CSP headers
+# CSP frame-ancestors directive is the modern replacement for X-Frame-Options
+
+# Method 3: For specific domain control, modify the middleware to use:
+# response['Content-Security-Policy'] = "frame-ancestors 'self' https://trusted-domain.com;"
+
+# Additional Security Headers for Educational Lab
+SECURE_CONTENT_TYPE_NOSNIFF = True  # Prevents MIME type sniffing
+SECURE_BROWSER_XSS_FILTER = True    # Enables XSS filtering in browsers
+
+# WARNING: Allowing iframe embedding makes the app vulnerable to clickjacking attacks
+# This configuration is appropriate for educational/demo purposes only
+# For production applications, consider:
+# - Restricting frame-ancestors to specific trusted domains
+# - Implementing CSRF protection for all forms
+# - Using HTTPS with proper SSL settings
+# SECURE_SSL_REDIRECT = True           # Force HTTPS
+# And implement proper CSP headers for iframe security
+
+# Iframe Embedding Testing:
+# Use the iframe-test.html file in the project root to test embedding functionality
+# SECURE_HSTS_SECONDS = 31536000      # HTTP Strict Transport Security
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+# SECURE_HSTS_PRELOAD = True
+# SESSION_COOKIE_SECURE = True        # Secure cookies over HTTPS only
+# CSRF_COOKIE_SECURE = True          # Secure CSRF cookies

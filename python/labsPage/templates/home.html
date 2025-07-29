@@ -63,7 +63,7 @@
         .grid-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
+            gap: 25px;
             margin-bottom: 40px;
         }
 
@@ -109,14 +109,91 @@
             display: block;
             color: #ffffff;
             text-decoration: none;
-            padding: 15px 20px;
-            margin: 10px 0;
+            padding: 20px;
+            margin: 15px 0;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
+            border-radius: 12px;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+        }
+
+        .main-lab-btn {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(33, 150, 243, 0.1));
+            border: 2px solid rgba(76, 175, 80, 0.3);
+            padding: 25px;
+        }
+
+        .lab-content {
+            margin-bottom: 10px;
+        }
+
+        .lab-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #4CAF50;
+            margin-bottom: 5px;
+        }
+
+        .lab-subtitle {
+            font-size: 14px;
+            color: #ccc;
+            font-style: italic;
+        }
+
+        .lab-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .feature-tag {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4CAF50;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 11px;
+            font-weight: 500;
+            border: 1px solid rgba(76, 175, 80, 0.3);
+        }
+
+        .category-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .category-item {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            border-left: 4px solid #4CAF50;
+            transition: all 0.3s ease;
+        }
+
+        .category-item:hover {
+            background: rgba(76, 175, 80, 0.1);
+            transform: translateX(5px);
+        }
+
+        .category-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #4CAF50;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .category-description {
+            color: #ccc;
+            font-size: 14px;
+            line-height: 1.4;
         }
 
         .menu-item::before {
@@ -135,10 +212,28 @@
         }
 
         .menu-item:hover {
-            background: rgba(76, 175, 80, 0.2);
+            background: rgba(76, 175, 80, 0.15);
             border-color: #4CAF50;
-            transform: translateX(10px);
+            transform: translateX(8px);
             color: #4CAF50;
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.2);
+        }
+
+        .main-lab-btn:hover {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(33, 150, 243, 0.2));
+            border-color: #4CAF50;
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(76, 175, 80, 0.3);
+        }
+
+        .main-lab-btn:hover .lab-title {
+            color: #66BB6A;
+        }
+
+        .main-lab-btn:hover .feature-tag {
+            background: rgba(76, 175, 80, 0.3);
+            color: #81C784;
+            transform: scale(1.05);
         }
 
         .status-badge {
@@ -158,27 +253,66 @@
         }
 
         .info-text {
-            color: #ffeb3b;
-            line-height: 1.6;
-        }
-
-        .info-text strong {
             color: #fff;
+            line-height: 1.8;
+            margin-bottom: 20px;
         }
 
-        .feature-grid {
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            color: #ccc;
+            font-weight: 500;
+        }
+
+        .info-value {
+            color: #4CAF50;
+            font-weight: 600;
+        }
+
+        .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 15px;
             margin-top: 20px;
         }
 
-        .feature-item {
+        .stat-item {
             background: rgba(0, 0, 0, 0.3);
             padding: 15px;
             border-radius: 8px;
             text-align: center;
             border-left: 3px solid #4CAF50;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            background: rgba(76, 175, 80, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4CAF50;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #ccc;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .footer {
@@ -194,12 +328,12 @@
     <div class="container">
         <div class="header">
             <h1 class="main-title">SQLi Labs</h1>
-            <p class="subtitle">Django Edition - Learn SQL Injection Safely</p>
+            <p class="subtitle">Django Edition</p>
         </div>
 
         <div class="grid-container">
             <div class="card">
-                <h2>Database Management</h2>
+                <h2>🛠️ Database Management</h2>
                 <a href="/setup-db/" class="menu-item">
                     Setup Database Schema
                     <span class="status-badge ready-badge">Ready</span>
@@ -216,52 +350,53 @@
 
             <div class="card">
                 <h2>SQL Injection Labs</h2>
-                <a href="/lab/error-based/" class="menu-item">
-                    Error-based SQLi
+                <a href="/lab/" class="menu-item main-lab-btn">
+                    <div class="lab-content">
+                        <div class="lab-title">Categorized SQLi Laboratory</div>
+                        <div class="lab-subtitle">4 main injection categories for comprehensive learning</div>
+                    </div>
                     <span class="status-badge ready-badge">Ready</span>
                 </a>
-                <a href="#" class="menu-item">
-                    Blind SQL Injection
-                    <span class="status-badge">Coming Soon</span>
-                </a>
-                <a href="#" class="menu-item">
-                    Time-based SQLi
-                    <span class="status-badge">Coming Soon</span>
-                </a>
-                <a href="#" class="menu-item">
-                    Union-based SQLi
-                    <span class="status-badge">Coming Soon</span>
-                </a>
+                <div class="lab-features">
+                    <div class="feature-tag">Union-based</div>
+                    <div class="feature-tag">Reflect Echo</div>
+                    <div class="feature-tag">Boolean-based</div>
+                    <div class="feature-tag">Time-based</div>
+                </div>
             </div>
 
             <div class="card">
-                <h2>System Information</h2>
+
                 <div class="info-text">
-                    <strong>Database:</strong> MySQL 9.1.0<br>
-                    <strong>Framework:</strong> Django 5.2.4<br>
-                    <strong>Purpose:</strong> SQL Injection Learning Lab<br>
-                    <strong>Environment:</strong> Educational Testing
+                    <div class="info-row">
+                        <span class="info-label">Database:</span>
+                        <span class="info-value">MySQL 9.1.0</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Framework:</span>
+                        <span class="info-value">Django 5.2.4</span>
+                    </div>
                 </div>
                 
-                <div class="feature-grid">
-                    <div class="feature-item">
-                        <strong>Tables</strong><br>
-                        <small>users, emails, uagents, referers</small>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">4</div>
+                        <div class="stat-label">Categories</div>
                     </div>
-                    <div class="feature-item">
-                        <strong>Python</strong><br>
-                        <small>Django ORM</small>
+                    <div class="stat-item">
+                        <div class="stat-number">∞</div>
+                        <div class="stat-label">Practice</div>
                     </div>
-                    <div class="feature-item">
-                        <strong>Security</strong><br>
-                        <small>Vulnerability Testing</small>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Safe</div>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="footer">
-            <p>SQLi Labs Django Edition | Educational Use Only | Stay Safe, Learn Responsibly</p>
+            <p>SQLi Labs Django Edition</p>
         </div>
     </div>
 

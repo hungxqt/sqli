@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.db import connection
+from django.views.decorators.clickjacking import xframe_options_deny, xframe_options_sameorigin
 from labsPage.models import User, Email
 
 def home(request):
@@ -128,35 +129,246 @@ def view_emails(request):
     emails = Email.objects.all()
     return render(request, 'view-emails.html', {'emails': emails})
 
-def lab_error_based(request):
-    """Error-based SQL Injection Lab"""
+def lab_unified(request):
+    """Unified SQL Injection Lab - All injection types in one interface"""
     result = None
+    results = None
     error = None
     query_executed = None
-    user_id = request.GET.get('id', '')
+    lab_type = request.GET.get('type', 'string')
     
-    if user_id:
-        try:
-            # INTENTIONALLY VULNERABLE: Direct string concatenation for educational purposes
-            # This creates an error-based SQL injection vulnerability
-            raw_query = f"SELECT username, password FROM {User._meta.db_table} WHERE id = {user_id}"
-            query_executed = raw_query
-            
-            with connection.cursor() as cursor:
-                cursor.execute(raw_query)
-                result = cursor.fetchone()
+    # String-based injection (Lab 1)
+    if lab_type == 'string':
+        username = request.GET.get('username', '')
+        if username:
+            try:
+                raw_query = f"SELECT id, username, password FROM {User._meta.db_table} WHERE username = '{username}'"
+                query_executed = raw_query
                 
-        except Exception as e:
-            error = str(e)
+                with connection.cursor() as cursor:
+                    cursor.execute(raw_query)
+                    result = cursor.fetchone()
+                    
+            except Exception as e:
+                error = str(e)
+        
+        context = {
+            'lab_type': lab_type,
+            'username': username,
+            'result': result,
+            'error': error,
+            'query_executed': query_executed
+        }
     
-    context = {
-        'user_id': user_id,
-        'result': result,
-        'error': error,
-        'query_executed': query_executed
-    }
+    # Numeric injection (Lab 2)
+    elif lab_type == 'numeric':
+        user_id = request.GET.get('id', '')
+        if user_id:
+            try:
+                raw_query = f"SELECT id, username, password FROM {User._meta.db_table} WHERE id = {user_id}"
+                query_executed = raw_query
+                
+                with connection.cursor() as cursor:
+                    cursor.execute(raw_query)
+                    result = cursor.fetchone()
+                    
+            except Exception as e:
+                error = str(e)
+        
+        context = {
+            'lab_type': lab_type,
+            'user_id': user_id,
+            'result': result,
+            'error': error,
+            'query_executed': query_executed
+        }
     
-    return render(request, 'lab-error-based.html', context)
+    # Search-based injection (Lab 3)
+    elif lab_type == 'search':
+        search_term = request.GET.get('search', '')
+        if search_term:
+            try:
+                raw_query = f"SELECT id, username, password FROM {User._meta.db_table} WHERE username LIKE '%{search_term}%'"
+                query_executed = raw_query
+                
+                with connection.cursor() as cursor:
+                    cursor.execute(raw_query)
+                    results = cursor.fetchall()
+                    
+            except Exception as e:
+                error = str(e)
+        
+        context = {
+            'lab_type': lab_type,
+            'search_term': search_term,
+            'results': results,
+            'error': error,
+            'query_executed': query_executed
+        }
+    
+    # Login-based injection (Lab 4)
+    elif lab_type == 'login':
+        username = request.POST.get('username', '') or request.GET.get('username', '')
+        password = request.POST.get('password', '') or request.GET.get('password', '')
+        
+        if username and password:
+            try:
+                raw_query = f"SELECT id, username, password FROM {User._meta.db_table} WHERE username = '{username}' AND password = '{password}'"
+                query_executed = raw_query
+                
+                with connection.cursor() as cursor:
+                    cursor.execute(raw_query)
+                    result = cursor.fetchone()
+                    
+            except Exception as e:
+                error = str(e)
+        
+        context = {
+            'lab_type': lab_type,
+            'username': username,
+            'password': password,
+            'result': result,
+            'error': error,
+            'query_executed': query_executed
+        }
+    
+    # Blind SQL Injection (Advanced Lab 1)
+    elif lab_type == 'blind':
+        user_id = request.GET.get('id', '')
+        if user_id:
+            try:
+                raw_query = f"SELECT id, username FROM {User._meta.db_table} WHERE id = {user_id}"
+                query_executed = raw_query
+                
+                with connection.cursor() as cursor:
+                    cursor.execute(raw_query)
+                    result = cursor.fetchone()
+                    # For blind injection, we only show if result exists or not
+                    result = "User exists" if result else "User not found"
+                    
+            except Exception as e:
+                error = str(e)
+        
+        context = {
+            'lab_type': lab_type,
+            'user_id': user_id,
+            'result': result,
+            'error': error,
+            'query_executed': query_executed
+        }
+    
+    # Time-based SQL Injection (Advanced Lab 2)
+    elif lab_type == 'time':
+        user_id = request.GET.get('id', '')
+        if user_id:
+            try:
+                raw_query = f"SELECT id, username FROM {User._meta.db_table} WHERE id = {user_id}"
+                query_executed = raw_query
+                
+                import time
+                start_time = time.time()
+                
+                with connection.cursor() as cursor:
+                    cursor.execute(raw_query)
+                    result = cursor.fetchone()
+                    
+                end_time = time.time()
+                execution_time = round((end_time - start_time) * 1000, 2)  # Convert to milliseconds
+                
+                result = f"Query executed in {execution_time}ms"
+                    
+            except Exception as e:
+                error = str(e)
+        
+        context = {
+            'lab_type': lab_type,
+            'user_id': user_id,
+            'result': result,
+            'error': error,
+            'query_executed': query_executed
+        }
+    
+    # Union-based SQL Injection (Advanced Lab 3)
+    elif lab_type == 'union':
+        user_id = request.GET.get('id', '')
+        if user_id:
+            try:
+                raw_query = f"SELECT id, username, password FROM {User._meta.db_table} WHERE id = {user_id}"
+                query_executed = raw_query
+                
+                with connection.cursor() as cursor:
+                    cursor.execute(raw_query)
+                    results = cursor.fetchall()
+                    
+            except Exception as e:
+                error = str(e)
+        
+        context = {
+            'lab_type': lab_type,
+            'user_id': user_id,
+            'results': results,
+            'error': error,
+            'query_executed': query_executed
+        }
+    
+    # Boolean-based Blind SQL Injection (Advanced Lab 4)
+    elif lab_type == 'boolean':
+        user_id = request.GET.get('id', '')
+        if user_id:
+            try:
+                raw_query = f"SELECT COUNT(*) FROM {User._meta.db_table} WHERE id = {user_id}"
+                query_executed = raw_query
+                
+                with connection.cursor() as cursor:
+                    cursor.execute(raw_query)
+                    count = cursor.fetchone()[0]
+                    result = "True" if count > 0 else "False"
+                    
+            except Exception as e:
+                error = str(e)
+        
+        context = {
+            'lab_type': lab_type,
+            'user_id': user_id,
+            'result': result,
+            'error': error,
+            'query_executed': query_executed
+        }
+    
+    # Reflect Echo Injection
+    elif lab_type == 'reflect':
+        username = request.GET.get('username', '')
+        if username:
+            try:
+                raw_query = f"SELECT id, username, password FROM {User._meta.db_table} WHERE username = '{username}'"
+                query_executed = raw_query
+                
+                with connection.cursor() as cursor:
+                    cursor.execute(raw_query)
+                    result = cursor.fetchone()
+                    
+            except Exception as e:
+                error = str(e)
+        
+        context = {
+            'lab_type': lab_type,
+            'username': username,
+            'result': result,
+            'error': error,
+            'query_executed': query_executed
+        }
+    
+    else:
+        # Default to union lab if invalid type
+        context = {
+            'lab_type': 'union',
+            'user_id': '',
+            'result': None,
+            'error': None,
+            'query_executed': None
+        }
+    
+    return render(request, 'lab-unified.html', context)
 
 def reset_db_view(request):
     """Reset database - clear all data and reset auto-increment counters"""
