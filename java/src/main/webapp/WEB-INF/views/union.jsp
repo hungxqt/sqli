@@ -1,0 +1,178 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNION-based SQL Injection</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            max-width: 800px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            background-color: #f5f5f5; 
+        }
+        .container { 
+            background: white; 
+            padding: 30px; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+        }
+        .query-display { 
+            background-color: #f8f9fa; 
+            border: 1px solid #dee2e6; 
+            padding: 15px; 
+            margin: 15px 0; 
+            border-radius: 4px; 
+            font-family: monospace; 
+            white-space: pre-wrap; 
+            word-break: break-all;
+        }
+        .result-box { 
+            background-color: #e9ecef; 
+            border: 1px solid #ced4da; 
+            padding: 15px; 
+            margin: 15px 0; 
+            border-radius: 4px; 
+        }
+        .error { 
+            background-color: #f8d7da; 
+            border: 1px solid #f5c6cb; 
+            color: #721c24; 
+        }
+        .success { 
+            background-color: #d4edda; 
+            border: 1px solid #c3e6cb; 
+            color: #155724; 
+        }
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: 15px; 
+        }
+        th, td { 
+            border: 1px solid #ddd; 
+            padding: 8px; 
+            text-align: left; 
+        }
+        th { 
+            background-color: #f2f2f2; 
+        }
+        .back-link { 
+            display: inline-block; 
+            padding: 10px 20px; 
+            background-color: #6c757d; 
+            color: white; 
+            text-decoration: none; 
+            border-radius: 5px; 
+            margin-bottom: 20px; 
+            transition: background-color 0.3s ease;
+        }
+        .back-link:hover { 
+            background-color: #5a6268; 
+            text-decoration: none; 
+            color: white; 
+        }
+        .form-group {
+            margin: 20px 0;
+        }
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+        .form-input {
+            width: 400px;
+            max-width: 100%;
+            padding: 10px;
+            border: 2px solid #ced4da;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+        }
+        .btn-submit {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: background-color 0.3s ease;
+        }
+        .btn-submit:hover {
+            background-color: #0056b3;
+        }
+        @media (max-width: 600px) {
+            .form-input {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            .btn-submit {
+                margin-left: 0;
+                width: 100%;
+            }
+            .form-group {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="${pageContext.request.contextPath}/" class="back-link">← Back</a>
+        <h1>UNION-based SQL Injection</h1>
+
+        <form method="GET">
+            <div class="form-group">
+                <label for="name">Name parameter:</label>
+                <input type="text" 
+                       name="name" 
+                       id="name"
+                       class="form-input"
+                       value="${searchTerm != null ? searchTerm : ''}" 
+                       placeholder="Enter username" 
+                       autocomplete="off">
+                <button type="submit" class="btn-submit">Search</button>
+            </div>
+        </form>
+
+        <c:if test="${not empty query}">
+            <div class="query-display">${query}</div>
+        </c:if>
+
+        <c:if test="${not empty error}">
+            <div class="result-box error"><strong>Error:</strong> ${error}</div>
+        </c:if>
+        
+        <c:if test="${empty error and not empty searchTerm}">
+            <div class="result-box ${not empty users ? 'success' : ''}">
+                <strong>Results for "${searchTerm}":</strong>
+                <c:choose>
+                    <c:when test="${not empty users}">
+                        <table>
+                            <thead><tr><th>ID</th><th>Username</th><th>Password</th></tr></thead>
+                            <tbody>
+                                <c:forEach var="user" items="${users}">
+                                    <tr><td>${user.id}</td><td>${user.username}</td><td>${user.password}</td></tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
+                    </c:when>
+                    <c:otherwise>
+                        <p>No users found.</p>
+                    </c:otherwise>
+                </c:choose>
+            </div>
+        </c:if>
+    </div>
+</body>
+</html>

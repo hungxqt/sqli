@@ -1,0 +1,7 @@
+sqli\servlets\BooleanServlet.class
+sqli\servlets\TimeServlet.class
+sqli\servlets\UnionServlet.class
+sqli\User.class
+sqli\servlets\IndexServlet.class
+sqli\servlets\ReflectServlet.class
+sqli\DatabaseUtil.class
