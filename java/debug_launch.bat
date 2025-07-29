@@ -1,0 +1,1 @@
+cmd /C "set MAVEN_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=9003 && mvn tomcat7:run"

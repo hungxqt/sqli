@@ -6,13 +6,48 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Java: Attach to Remote",
+      "type": "java",
+      "request": "attach",
+      "hostName": "localhost",
+      "port": 9003,
+      "projectName": "java"
+    },
+    {
+      "name": "JS: Attach to Remote",
+      "type": "node",
+      "request": "attach",
+      "port": 9003,
+      "restart": true,
+      "skipFiles": [
+        "<node_internals>/**",
+        "**/node_modules/**"
+      ],
+      "localRoot": "${workspaceFolder}/js",
+      "remoteRoot": "${workspaceFolder}/js"
+    },
+    {
+      "name": "JS: Debug Current File",
       "type": "node",
       "request": "launch",
-      "name": "Debug via npm start",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "start"],
-      // "port": 9229,  // cần cho attach nếu dùng inspect mode
-      "console": "integratedTerminal"
+      "program": "${file}",
+      "cwd": "${workspaceFolder}/js",
+      "skipFiles": [
+        "<node_internals>/**",
+        "**/node_modules/**"
+      ]
+    },
+    {
+      "name": "PHP: Attach to Remote",
+      "type": "php",
+      "request": "launch",
+      "port": 9003,
+      "skipFiles": [
+        "**/vendor/**/*.php",
+        "**/Symfony/**/*.php",
+        "**/Laravel/**/*.php",
+        "**/zend/**/*.php",
+      ]
     },
     {
       "name": "Attach by Process ID",
@@ -22,6 +57,23 @@
         "<node_internals>/**"
       ],
       "type": "node"
+    },
+    {
+      "name": "Django: Attach to Remote",
+      "type": "debugpy",
+      "request": "attach",
+      "connect": {
+        "host": "127.0.0.1",
+        "port": 6000
+      },
+      "pathMappings": [
+        {
+          "localRoot": "${workspaceFolder}/python",
+          "remoteRoot": "${workspaceFolder}/python"
+        }
+      ],
+      "django": true,
+      "justMyCode": false
     }
   ]
 }
