@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time-based SQL Injection</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            max-width: 800px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            background-color: #f5f5f5; 
+        }
+        .container { 
+            background: white; 
+            padding: 30px; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+        }
+        .query-display { 
+            background-color: #f8f9fa; 
+            border: 1px solid #dee2e6; 
+            padding: 15px; 
+            margin: 15px 0; 
+            border-radius: 4px; 
+            font-family: monospace; 
+            white-space: pre-wrap; 
+            word-break: break-all;
+        }
+        .result-box { 
+            background-color: #e9ecef; 
+            border: 1px solid #ced4da; 
+            padding: 15px; 
+            margin: 15px 0; 
+            border-radius: 4px; 
+        }
+        .error { 
+            background-color: #f8d7da; 
+            border: 1px solid #f5c6cb; 
+            color: #721c24; 
+        }
+        .success { 
+            background-color: #d4edda; 
+            border: 1px solid #c3e6cb; 
+            color: #155724; 
+        }
+        .back-link { 
+            display: inline-block; 
+            padding: 10px 20px; 
+            background-color: #6c757d; 
+            color: white; 
+            text-decoration: none; 
+            border-radius: 5px; 
+            margin-bottom: 20px; 
+            transition: background-color 0.3s ease;
+        }
+        .back-link:hover { 
+            background-color: #5a6268; 
+            text-decoration: none; 
+            color: white; 
+        }
+        .form-group {
+            margin: 20px 0;
+        }
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+        .form-input {
+            width: 400px;
+            max-width: 100%;
+            padding: 10px;
+            border: 2px solid #ced4da;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+        }
+        .btn-submit {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: background-color 0.3s ease;
+        }
+        .btn-submit:hover {
+            background-color: #0056b3;
+        }
+        @@media (max-width: 600px) {
+            .form-input {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            .btn-submit {
+                margin-left: 0;
+                width: 100%;
+            }
+            .form-group {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-link">← Back</a>
+        <h1>Time-based SQL Injection</h1>
+
+        <form method="GET">
+            <div class="form-group">
+                <label for="name">Name parameter:</label>
+                <input type="text" 
+                       name="name" 
+                       id="name"
+                       class="form-input"
+                       value="@(ViewData["SearchTerm"]?.ToString() ?? "")" 
+                       placeholder="Enter username" 
+                       autocomplete="off">
+                <button type="submit" class="btn-submit">Search</button>
+            </div>
+        </form>
+
+        @if (!string.IsNullOrEmpty(ViewData["Query"]?.ToString()))
+        {
+            <div class="query-display">@ViewData["Query"]</div>
+        }
+
+        @if (!string.IsNullOrEmpty(ViewData["Error"]?.ToString()))
+        {
+            <div class="result-box error"><strong>Error:</strong> @ViewData["Error"]</div>
+        }
+        else if (!string.IsNullOrEmpty(ViewData["SearchTerm"]?.ToString()))
+        {
+            <div class="result-box success">
+                <strong>Response:</strong> @ViewData["Result"]
+            </div>
+        }
+    </div>
+</body>
+</html>
