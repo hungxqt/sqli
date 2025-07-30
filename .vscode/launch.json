@@ -38,16 +38,24 @@
       ]
     },
     {
-      "name": "PHP: Attach to Remote",
+      "name": "PHP: Attach to Docker Container",
       "type": "php",
       "request": "launch",
       "port": 9003,
+      "pathMappings": {
+        "/var/www": "${workspaceFolder}/php"
+      },
       "skipFiles": [
         "**/vendor/**/*.php",
         "**/Symfony/**/*.php",
         "**/Laravel/**/*.php",
-        "**/zend/**/*.php",
-      ]
+        "**/zend/**/*.php"
+      ],
+      "xdebugSettings": {
+        "max_children": 100,
+        "max_data": 1024,
+        "max_depth": 3
+      }
     },
     {
       "name": "Attach by Process ID",
