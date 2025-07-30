@@ -1,0 +1,18 @@
+# Django Dependencies
+Django==5.2.4
+mysqlclient==2.2.4
+debugpy==1.8.5
+
+# Database
+PyMySQL==1.1.1
+
+# Development tools
+python-dotenv==1.0.1
+
+# Web server for production (optional)
+gunicorn==22.0.0
+whitenoise==6.6.0
+
+# Security and utilities
+Pillow==10.4.0
+requests==2.32.3

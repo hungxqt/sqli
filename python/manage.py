@@ -25,8 +25,11 @@ if __name__ == '__main__':
             try:
                 debugpy.listen(("0.0.0.0", 6000))
                 print("Debug server listening on 0.0.0.0:6000")
-                print("Attach VS Code debugger to continue...")
-
+                print("Connect VS Code debugger to continue...")
+                print(f"Working directory: {os.getcwd()}")
+                print(f"Python path: {sys.path}")
+                
+                # Optional: Wait for debugger to attach
                 # debugpy.wait_for_client()
             except (RuntimeError, Exception) as e:
                 print(f"Debug setup error: {e}")

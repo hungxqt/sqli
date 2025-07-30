@@ -1,3 +1,22 @@
 {
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "python.defaultInterpreterPath": "/usr/local/bin/python",
+    "python.debugging.enabled": true,
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.extraPaths": [
+        "./python"
+    ],
+    "files.watcherExclude": {
+        "**/python/__pycache__/**": true,
+        "**/python/**/__pycache__/**": true
+    },
+    "python.analysis.include": [
+        "./python"
+    ],
+    "python.analysis.exclude": [
+        "./java",
+        "./dotnet", 
+        "./php",
+        "./js"
+    ]
 }

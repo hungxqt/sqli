@@ -69,11 +69,30 @@
       "pathMappings": [
         {
           "localRoot": "${workspaceFolder}/python",
-          "remoteRoot": "${workspaceFolder}/python"
+          "remoteRoot": "/app"
         }
       ],
       "django": true,
-      "justMyCode": false
+      "justMyCode": false,
+      "logToFile": true
+    },
+    {
+      "name": "Python: Attach to Docker Container",
+      "type": "debugpy",
+      "request": "attach",
+      "connect": {
+        "host": "localhost",
+        "port": 6000
+      },
+      "pathMappings": [
+        {
+          "localRoot": "${workspaceFolder}/python",
+          "remoteRoot": "/app"
+        }
+      ],
+      "django": true,
+      "justMyCode": false,
+      "subProcess": true
     }
   ]
 }

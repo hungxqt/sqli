@@ -1,0 +1,58 @@
+services:
+  python-lab-host:
+    build: .
+    ports:
+      - "8000:8000"   # Django web server
+      - "6000:6000"   # Debug port
+    environment:
+      - DEBUG_MODE=true
+      - DB_HOST=host.docker.internal  # Connect to host MySQL
+      - DB_PORT=3306
+      - DB_NAME=django
+      - DB_USER=root
+      - DB_PASSWORD=
+    volumes:
+      - .:/app
+      - /app/__pycache__
+      - /app/labsPage/__pycache__
+      - /app/python/__pycache__
+    extra_hosts:
+      - "host.docker.internal:host-gateway"  # Enable host.docker.internal on Linux
+    network_mode: bridge
+    command: ["debug"]
+    restart: unless-stopped
+
+  python-lab-dev:
+    build: .
+    ports:
+      - "8001:8000"   # Alternative port for dev mode
+    environment:
+      - DEBUG_MODE=false
+      - DB_HOST=host.docker.internal
+      - DB_PORT=3306
+      - DB_NAME=django
+      - DB_USER=root
+      - DB_PASSWORD=
+    volumes:
+      - .:/app
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    network_mode: bridge
+    command: ["dev"]
+    profiles:
+      - dev
+
+  python-lab-test:
+    build: .
+    environment:
+      - DB_HOST=host.docker.internal
+      - DB_PORT=3306
+      - DB_NAME=django
+      - DB_USER=root
+      - DB_PASSWORD=
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    network_mode: bridge
+    command: ["test-connection"]
+    profiles:
+      - test
