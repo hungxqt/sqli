@@ -1,0 +1,22 @@
+services:
+  java-lab:
+    build: .
+    ports:
+      - "8000:8000"
+      - "9001:9001"  
+    environment:
+      - JAVA_ENV=development
+      - DB_HOST=host.docker.internal
+      - DB_PORT=3306
+      - DB_DATABASE=java
+      - DB_USERNAME=root
+      - DB_PASSWORD=
+      - MAVEN_OPTS=-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=0.0.0.0:9001
+    volumes:
+      - .:/app
+      - /app/target
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    network_mode: bridge
+    command: ["debug"]
+    restart: unless-stopped

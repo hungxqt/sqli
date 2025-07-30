@@ -14,6 +14,14 @@
       "projectName": "java"
     },
     {
+      "name": "Java: Attach to Docker",
+      "type": "java",
+      "request": "attach",
+      "hostName": "localhost",
+      "port": 9001,
+      "projectName": "java"
+    },
+    {
       "name": "JS: Attach to Remote",
       "type": "node",
       "request": "attach",
