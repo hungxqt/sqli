@@ -6,9 +6,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DatabaseUtil {
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/tomcat?useSSL=false&allowPublicKeyRetrieval=true";
-    private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "";
+    private static final String DB_HOST = System.getenv("DB_HOST") != null ? System.getenv("DB_HOST") : "localhost";
+    private static final String DB_PORT = System.getenv("DB_PORT") != null ? System.getenv("DB_PORT") : "3306";
+    private static final String DB_DATABASE = System.getenv("DB_DATABASE") != null ? System.getenv("DB_DATABASE") : "tomcat";
+    private static final String DB_USER = System.getenv("DB_USERNAME") != null ? System.getenv("DB_USERNAME") : "root";
+    private static final String DB_PASSWORD = System.getenv("DB_PASSWORD") != null ? System.getenv("DB_PASSWORD") : "";
+    
+    private static final String DB_URL = "jdbc:mysql://" + DB_HOST + ":" + DB_PORT + "/" + DB_DATABASE + "?useSSL=false&allowPublicKeyRetrieval=true";
+    private static final String DB_URL_NO_DB = "jdbc:mysql://" + DB_HOST + ":" + DB_PORT + "/?useSSL=false&allowPublicKeyRetrieval=true";
     
     static {
         try {
@@ -24,11 +29,11 @@ public class DatabaseUtil {
     }
     
     private static void initializeDatabase() {
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/?useSSL=false&allowPublicKeyRetrieval=true", DB_USER, DB_PASSWORD);
+        try (Connection conn = DriverManager.getConnection(DB_URL_NO_DB, DB_USER, DB_PASSWORD);
              Statement stmt = conn.createStatement()) {
             
-            stmt.execute("CREATE DATABASE IF NOT EXISTS tomcat");
-            stmt.execute("USE tomcat");
+            stmt.execute("CREATE DATABASE IF NOT EXISTS " + DB_DATABASE);
+            stmt.execute("USE " + DB_DATABASE);
             
             String createTable = "CREATE TABLE IF NOT EXISTS users (" +
                 "id INT AUTO_INCREMENT PRIMARY KEY, " +
