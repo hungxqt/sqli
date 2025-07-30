@@ -16,10 +16,11 @@ app.use(express.static('public'));
 
 // Database configuration
 const dbConfig = {
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'nodejs',
+    host: process.env.DB_HOST || 'localhost',
+    port: process.env.DB_PORT || 3306,
+    user: process.env.DB_USERNAME || 'root',
+    password: process.env.DB_PASSWORD || '',
+    database: process.env.DB_DATABASE || 'nodejs',
     multipleStatements: true
 };
 
@@ -29,6 +30,7 @@ async function initializeDatabase() {
         // Connect without database first
         const connection = mysql.createConnection({
             host: dbConfig.host,
+            port: dbConfig.port,
             user: dbConfig.user,
             password: dbConfig.password,
             multipleStatements: true

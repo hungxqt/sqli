@@ -27,6 +27,19 @@
       "remoteRoot": "${workspaceFolder}/js"
     },
     {
+      "name": "JS: Attach to Docker",
+      "type": "node",
+      "request": "attach",
+      "port": 9002,
+      "restart": true,
+      "skipFiles": [
+        "<node_internals>/**",
+        "**/node_modules/**"
+      ],
+      "localRoot": "${workspaceFolder}/js",
+      "remoteRoot": "/app"
+    },
+    {
       "name": "JS: Debug Current File",
       "type": "node",
       "request": "launch",

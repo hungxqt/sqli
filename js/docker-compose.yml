@@ -1,0 +1,21 @@
+services:
+  js-lab:
+    build: .
+    ports:
+      - "3000:3000"
+      - "9002:9002"  
+    environment:
+      - NODE_ENV=development
+      - DB_HOST=host.docker.internal
+      - DB_PORT=3306
+      - DB_DATABASE=nodejs
+      - DB_USERNAME=root
+      - DB_PASSWORD=
+    volumes:
+      - .:/app
+      - /app/node_modules
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    network_mode: bridge
+    command: ["debug"]
+    restart: unless-stopped
