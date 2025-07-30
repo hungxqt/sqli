@@ -1,11 +1,9 @@
 #!/usr/bin/env python
-"""Django's command-line utility for administrative tasks."""
 import os
 import sys
 import debugpy
 
 def main():
-    """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'python.settings')
     try:
         from django.core.management import execute_from_command_line
@@ -28,9 +26,6 @@ if __name__ == '__main__':
                 print("Connect VS Code debugger to continue...")
                 print(f"Working directory: {os.getcwd()}")
                 print(f"Python path: {sys.path}")
-                
-                # Optional: Wait for debugger to attach
-                # debugpy.wait_for_client()
             except (RuntimeError, Exception) as e:
                 print(f"Debug setup error: {e}")
     main()

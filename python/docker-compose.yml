@@ -2,11 +2,11 @@ services:
   python-lab-host:
     build: .
     ports:
-      - "8000:8000"   # Django web server
-      - "6000:6000"   # Debug port
+      - "8000:8000"
+      - "6000:6000"
     environment:
       - DEBUG_MODE=true
-      - DB_HOST=host.docker.internal  # Connect to host MySQL
+      - DB_HOST=host.docker.internal
       - DB_PORT=3306
       - DB_NAME=django
       - DB_USER=root
@@ -17,7 +17,7 @@ services:
       - /app/labsPage/__pycache__
       - /app/python/__pycache__
     extra_hosts:
-      - "host.docker.internal:host-gateway"  # Enable host.docker.internal on Linux
+      - "host.docker.internal:host-gateway"
     network_mode: bridge
     command: ["debug"]
     restart: unless-stopped
@@ -25,7 +25,7 @@ services:
   python-lab-dev:
     build: .
     ports:
-      - "8001:8000"   # Alternative port for dev mode
+      - "8001:8000"
     environment:
       - DEBUG_MODE=false
       - DB_HOST=host.docker.internal

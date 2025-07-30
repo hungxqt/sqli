@@ -5,19 +5,14 @@ echo "========================================"
 echo "  Python Django SQLi Lab - Host MySQL  "
 echo "========================================"
 
-# Function to wait for host MySQL
 wait_for_host_mysql() {
     echo "Waiting for MySQL on host machine (${DB_HOST:-host.docker.internal}:${DB_PORT:-3306})..."
     
-    # Try different host resolution methods
     local mysql_host="${DB_HOST:-host.docker.internal}"
     
-    # On Linux, try to use host.docker.internal or fallback to gateway IP
     if [ "$mysql_host" = "host.docker.internal" ]; then
-        # Check if host.docker.internal is available
         if ! ping -c 1 host.docker.internal >/dev/null 2>&1; then
             echo "host.docker.internal not available, trying gateway IP..."
-            # Get the gateway IP (Docker host)
             local gateway_ip=$(ip route | awk '/default/ { print $3; exit }')
             if [ -n "$gateway_ip" ]; then
                 mysql_host="$gateway_ip"
@@ -53,13 +48,11 @@ wait_for_host_mysql() {
     
     echo "MySQL on host machine is up - continuing"
     
-    # Update DB_HOST environment variable if we changed it
     if [ "$mysql_host" != "${DB_HOST:-host.docker.internal}" ]; then
         export DB_HOST="$mysql_host"
     fi
 }
 
-# Function to test database connection
 test_database_connection() {
     echo "Testing database connection..."
     python << EOF
@@ -83,15 +76,12 @@ except Exception as e:
 EOF
 }
 
-# Function to setup database
 setup_database() {
     echo "Setting up database..."
     
-    # Run migrations
     python manage.py makemigrations --noinput || true
     python manage.py migrate --noinput
     
-    # Create superuser if it doesn't exist
     python manage.py shell << EOF
 from django.contrib.auth import get_user_model
 User = get_user_model()
@@ -103,7 +93,6 @@ else:
 EOF
 }
 
-# Function to start debug mode
 start_debug_mode() {
     echo ""
     echo "Starting Django in DEBUG mode with remote debugging..."
@@ -125,7 +114,6 @@ start_debug_mode() {
     exec python manage.py runserver 0.0.0.0:8000
 }
 
-# Function to start development mode
 start_dev_mode() {
     echo "Starting Django in DEVELOPMENT mode..."
     echo "Web server listening on: 0.0.0.0:8000"
@@ -135,7 +123,6 @@ start_dev_mode() {
     exec python manage.py runserver 0.0.0.0:8000
 }
 
-# Function to start production mode
 start_production_mode() {
     echo "Starting Django in PRODUCTION mode..."
     echo "Collecting static files..."
@@ -150,7 +137,6 @@ start_production_mode() {
         --error-logfile -
 }
 
-# Function to show connection info
 show_connection_info() {
     echo "Connection Information:"
     echo "   - Database Host: ${DB_HOST:-host.docker.internal}"
@@ -161,7 +147,6 @@ show_connection_info() {
     echo ""
 }
 
-# Main execution
 show_connection_info
 
 case "$1" in
@@ -202,13 +187,11 @@ case "$1" in
         ;;
     *)
         if [ -z "$1" ]; then
-            # Default behavior
             wait_for_host_mysql
             test_database_connection
             setup_database
             start_debug_mode
         else
-            # Execute custom command
             exec "$@"
         fi
         ;;
