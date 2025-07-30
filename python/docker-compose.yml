@@ -1,5 +1,5 @@
 services:
-  python-lab-host:
+  python-lab:
     build: .
     ports:
       - "8000:8000"
@@ -21,38 +21,3 @@ services:
     network_mode: bridge
     command: ["debug"]
     restart: unless-stopped
-
-  python-lab-dev:
-    build: .
-    ports:
-      - "8001:8000"
-    environment:
-      - DEBUG_MODE=false
-      - DB_HOST=host.docker.internal
-      - DB_PORT=3306
-      - DB_NAME=django
-      - DB_USER=root
-      - DB_PASSWORD=
-    volumes:
-      - .:/app
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
-    network_mode: bridge
-    command: ["dev"]
-    profiles:
-      - dev
-
-  python-lab-test:
-    build: .
-    environment:
-      - DB_HOST=host.docker.internal
-      - DB_PORT=3306
-      - DB_NAME=django
-      - DB_USER=root
-      - DB_PASSWORD=
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
-    network_mode: bridge
-    command: ["test-connection"]
-    profiles:
-      - test

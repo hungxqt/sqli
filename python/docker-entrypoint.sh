@@ -1,18 +1,13 @@
 #!/bin/bash
 set -e
 
-echo "========================================"
-echo "  Python Django SQLi Lab - Host MySQL  "
-echo "========================================"
-
 wait_for_host_mysql() {
-    echo "Waiting for MySQL on host machine (${DB_HOST:-host.docker.internal}:${DB_PORT:-3306})..."
+    echo "Waiting for MySQL on ${DB_HOST:-host.docker.internal}:${DB_PORT:-3306}..."
     
     local mysql_host="${DB_HOST:-host.docker.internal}"
     
     if [ "$mysql_host" = "host.docker.internal" ]; then
         if ! ping -c 1 host.docker.internal >/dev/null 2>&1; then
-            echo "host.docker.internal not available, trying gateway IP..."
             local gateway_ip=$(ip route | awk '/default/ { print $3; exit }')
             if [ -n "$gateway_ip" ]; then
                 mysql_host="$gateway_ip"
@@ -42,11 +37,8 @@ wait_for_host_mysql() {
             echo "- Check if MySQL is listening: netstat -tulpn | grep 3306"
             exit 1
         fi
-        echo "MySQL is unavailable - sleeping (attempt $retries/$max_retries)"
         sleep 2
     done
-    
-    echo "MySQL on host machine is up - continuing"
     
     if [ "$mysql_host" != "${DB_HOST:-host.docker.internal}" ]; then
         export DB_HOST="$mysql_host"
@@ -54,7 +46,6 @@ wait_for_host_mysql() {
 }
 
 test_database_connection() {
-    echo "Testing database connection..."
     python << EOF
 import os
 import django
@@ -77,8 +68,6 @@ EOF
 }
 
 setup_database() {
-    echo "Setting up database..."
-    
     python manage.py makemigrations --noinput || true
     python manage.py migrate --noinput
     
@@ -94,79 +83,19 @@ EOF
 }
 
 start_debug_mode() {
-    echo ""
-    echo "Starting Django in DEBUG mode with remote debugging..."
-    echo "Debug server listening on: 0.0.0.0:6000"
-    echo "Web server listening on: 0.0.0.0:8000"
-    echo "MySQL connection: ${DB_HOST:-host.docker.internal}:${DB_PORT:-3306}"
-    echo ""
-    echo "VS Code Remote Debugging:"
-    echo "1. Set breakpoints in your Python code"
-    echo "2. Use 'Python: Remote Attach' configuration" 
-    echo "3. Connect to localhost:6000"
-    echo ""
-    echo "Access URLs:"
-    echo "   - Web App: http://localhost:8000"
-    echo "   - Admin: http://localhost:8000/admin (admin/admin123)"
-    echo ""
+    echo "Starting Django with remote debugging..."
+    echo "Web: http://localhost:8000 | Debug: localhost:6000 | Admin: admin/admin123"
     
     export DEBUG_MODE=true
     exec python manage.py runserver 0.0.0.0:8000
 }
 
-start_dev_mode() {
-    echo "Starting Django in DEVELOPMENT mode..."
-    echo "Web server listening on: 0.0.0.0:8000"
-    echo "MySQL connection: ${DB_HOST:-host.docker.internal}:${DB_PORT:-3306}"
-    
-    export DEBUG_MODE=false
-    exec python manage.py runserver 0.0.0.0:8000
-}
-
-start_production_mode() {
-    echo "Starting Django in PRODUCTION mode..."
-    echo "Collecting static files..."
-    python manage.py collectstatic --noinput
-    
-    echo "Starting Gunicorn server..."
-    exec gunicorn python.wsgi:application \
-        --bind 0.0.0.0:8000 \
-        --workers 3 \
-        --log-level info \
-        --access-logfile - \
-        --error-logfile -
-}
-
-show_connection_info() {
-    echo "Connection Information:"
-    echo "   - Database Host: ${DB_HOST:-host.docker.internal}"
-    echo "   - Database Port: ${DB_PORT:-3306}"
-    echo "   - Database Name: ${DB_NAME:-django}"
-    echo "   - Database User: ${DB_USER:-root}"
-    echo "   - Debug Mode: ${DEBUG_MODE:-true}"
-    echo ""
-}
-
-show_connection_info
-
 case "$1" in
-    "debug")
+    "debug"|"")
         wait_for_host_mysql
         test_database_connection
         setup_database
         start_debug_mode
-        ;;
-    "dev")
-        wait_for_host_mysql
-        test_database_connection
-        setup_database
-        start_dev_mode
-        ;;
-    "production")
-        wait_for_host_mysql
-        test_database_connection
-        setup_database
-        start_production_mode
         ;;
     "test-connection")
         wait_for_host_mysql
@@ -176,23 +105,17 @@ case "$1" in
     "bash")
         exec /bin/bash
         ;;
-    "python")
-        shift
-        exec python "$@"
-        ;;
     "manage")
         shift
         wait_for_host_mysql
         exec python manage.py "$@"
         ;;
     *)
-        if [ -z "$1" ]; then
-            wait_for_host_mysql
-            test_database_connection
-            setup_database
-            start_debug_mode
-        else
-            exec "$@"
-        fi
+        echo "Available commands:"
+        echo "  debug (default) - Start Django in debug mode with remote debugging"
+        echo "  test-connection - Test MySQL connection only"
+        echo "  bash - Open bash shell"
+        echo "  manage [args] - Run Django management commands"
+        exit 1
         ;;
 esac

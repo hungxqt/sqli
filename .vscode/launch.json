@@ -91,7 +91,7 @@
         }
       ],
       "django": true,
-      "justMyCode": false,
+      "justMyCode": true,
       "subProcess": true
     }
   ]
