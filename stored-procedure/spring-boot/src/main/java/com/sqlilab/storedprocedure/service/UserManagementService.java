@@ -13,16 +13,13 @@ public class UserManagementService {
     @Autowired
     private DataSource dataSource;
 
-    // User Search - Appears secure with parameterized calls
-    // but the stored procedure concatenates strings internally
     public List<Map<String, Object>> searchUsers(String searchTerm) {
         List<Map<String, Object>> results = new ArrayList<>();
         
         try (Connection conn = dataSource.getConnection()) {
-            // Application correctly uses parameterized call
             String sql = "{call sp_search_users(?, ?)}";
             CallableStatement stmt = conn.prepareCall(sql);
-            stmt.setString(1, searchTerm);  // Parameterized input
+            stmt.setString(1, searchTerm);
             stmt.registerOutParameter(2, Types.REF_CURSOR);
             
             stmt.execute();
@@ -47,16 +44,13 @@ public class UserManagementService {
         return results;
     }
 
-    // Order Management - Parameterized at application level
-    // but procedure uses dynamic SQL construction
     public List<Map<String, Object>> getUserOrders(String customerId) {
         List<Map<String, Object>> results = new ArrayList<>();
         
         try (Connection conn = dataSource.getConnection()) {
-            // Application correctly uses parameterized call
             String sql = "{call sp_get_customer_orders(?, ?)}";
             CallableStatement stmt = conn.prepareCall(sql);
-            stmt.setString(1, customerId);  // Parameterized input
+            stmt.setString(1, customerId);
             stmt.registerOutParameter(2, Types.REF_CURSOR);
             
             stmt.execute();
@@ -83,16 +77,13 @@ public class UserManagementService {
         return results;
     }
 
-    // Authentication Check - Appears to use safe parameter binding
-    // but procedure has vulnerable conditional logic
     public Map<String, Object> validateUserAccess(String username, String accessLevel) {
         try (Connection conn = dataSource.getConnection()) {
-            // Application correctly uses parameterized call
             String sql = "{? = call sp_validate_user_access(?, ?)}";
             CallableStatement stmt = conn.prepareCall(sql);
             stmt.registerOutParameter(1, Types.NUMERIC);
-            stmt.setString(2, username);     // Parameterized input
-            stmt.setString(3, accessLevel);  // Parameterized input - but vulnerable in procedure
+            stmt.setString(2, username);
+            stmt.setString(3, accessLevel);
             
             stmt.execute();
             
@@ -114,7 +105,6 @@ public class UserManagementService {
         }
     }
 
-    // Secure implementations for comparison
     public List<Map<String, Object>> searchUsersSecure(String searchTerm) {
         List<Map<String, Object>> results = new ArrayList<>();
         
@@ -152,7 +142,7 @@ public class UserManagementService {
         try (Connection conn = dataSource.getConnection()) {
             String sql = "{call sp_get_customer_orders_secure(?, ?)}";
             CallableStatement stmt = conn.prepareCall(sql);
-            stmt.setLong(1, Long.parseLong(customerId));  // Proper numeric parameter
+            stmt.setLong(1, Long.parseLong(customerId));
             stmt.registerOutParameter(2, Types.REF_CURSOR);
             
             stmt.execute();

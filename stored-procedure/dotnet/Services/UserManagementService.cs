@@ -22,8 +22,6 @@ namespace CompanyApp.UserManagement.Services
             return new OracleConnection(_configuration.GetConnectionString("DefaultConnection"));
         }
 
-        // User Search - Appears secure with parameterized calls
-        // but the stored procedure concatenates strings internally
         public async Task<List<Dictionary<string, object>>> SearchUsersAsync(string searchTerm)
         {
             var results = new List<Dictionary<string, object>>();
@@ -63,8 +61,6 @@ namespace CompanyApp.UserManagement.Services
             return results;
         }
 
-        // Order Management - Parameterized at application level
-        // but procedure uses dynamic SQL construction
         public async Task<List<Dictionary<string, object>>> GetUserOrdersAsync(string customerId)
         {
             var results = new List<Dictionary<string, object>>();
@@ -77,7 +73,7 @@ namespace CompanyApp.UserManagement.Services
                 CommandType = CommandType.StoredProcedure
             };
 
-            command.Parameters.Add("p_customer_id", OracleDbType.Varchar2).Value = customerId; // Note: passing as string
+            command.Parameters.Add("p_customer_id", OracleDbType.Varchar2).Value = customerId;
             command.Parameters.Add("p_cursor", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
 
             try
@@ -104,8 +100,6 @@ namespace CompanyApp.UserManagement.Services
             return results;
         }
 
-        // Authentication Check - Appears to use safe parameter binding
-        // but procedure has vulnerable conditional logic
         public async Task<Dictionary<string, object>> ValidateUserAccessAsync(string username, string accessLevel)
         {
             using var connection = GetConnection();
@@ -142,7 +136,6 @@ namespace CompanyApp.UserManagement.Services
             }
         }
 
-        // Secure implementations for comparison
         public async Task<List<Dictionary<string, object>>> SearchUsersSecureAsync(string searchTerm)
         {
             var results = new List<Dictionary<string, object>>();
@@ -194,14 +187,13 @@ namespace CompanyApp.UserManagement.Services
                 CommandType = CommandType.StoredProcedure
             };
 
-            // Parse to ensure it's a valid number for secure version
             if (!long.TryParse(customerId, out long customerIdLong))
             {
                 results.Add(new Dictionary<string, object> { { "error", "Invalid customer ID format" } });
                 return results;
             }
 
-            command.Parameters.Add("p_customer_id", OracleDbType.Int64).Value = customerIdLong; // Proper numeric parameter
+            command.Parameters.Add("p_customer_id", OracleDbType.Int64).Value = customerIdLong;
             command.Parameters.Add("p_cursor", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
 
             try

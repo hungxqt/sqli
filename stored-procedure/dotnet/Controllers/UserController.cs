@@ -14,7 +14,6 @@ namespace CompanyApp.UserManagement.Controllers
             _userService = userService;
         }
 
-        // User Search Interface
         [HttpPost("users/search")]
         public async Task<IActionResult> SearchUsers([FromForm] string searchTerm)
         {
@@ -29,7 +28,6 @@ namespace CompanyApp.UserManagement.Controllers
             }
         }
 
-        // Order Management Interface
         [HttpPost("orders/customer")]
         public async Task<IActionResult> GetCustomerOrders([FromForm] string customerId)
         {
@@ -44,7 +42,6 @@ namespace CompanyApp.UserManagement.Controllers
             }
         }
 
-        // Access Control Interface
         [HttpPost("access/validate")]
         public async Task<IActionResult> ValidateAccess([FromForm] string username, [FromForm] string accessLevel)
         {
@@ -58,8 +55,6 @@ namespace CompanyApp.UserManagement.Controllers
                 return BadRequest(new { error = ex.Message });
             }
         }
-
-        // Secure endpoints for comparison
         [HttpPost("users/search-secure")]
         public async Task<IActionResult> SearchUsersSecure([FromForm] string searchTerm)
         {

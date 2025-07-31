@@ -20,7 +20,6 @@ public class UserController {
         return "index";
     }
 
-    // User Search Interface
     @GetMapping("/users")
     public String userSearch(Model model) {
         model.addAttribute("title", "User Search");
@@ -34,7 +33,6 @@ public class UserController {
         return userService.searchUsers(searchTerm);
     }
 
-    // Order Management Interface
     @GetMapping("/orders")
     public String orderManagement(Model model) {
         model.addAttribute("title", "Order Management");
@@ -48,7 +46,6 @@ public class UserController {
         return userService.getUserOrders(customerId);
     }
 
-    // Access Control Interface
     @GetMapping("/access")
     public String accessControl(Model model) {
         model.addAttribute("title", "Access Validation");
@@ -62,7 +59,6 @@ public class UserController {
         return userService.validateUserAccess(username, accessLevel);
     }
 
-    // Secure endpoints for comparison
     @GetMapping("/secure")
     public String secureExamples(Model model) {
         model.addAttribute("title", "Secure Implementation Examples");

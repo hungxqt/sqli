@@ -17,13 +17,11 @@ namespace CompanyApp.UserManagement.Models
         {
             base.OnModelCreating(modelBuilder);
 
-            // Configure sequences
             modelBuilder.HasSequence("users_seq").StartsAt(1).IncrementsBy(1);
             modelBuilder.HasSequence("orders_seq").StartsAt(1).IncrementsBy(1);
             modelBuilder.HasSequence("sessions_seq").StartsAt(1).IncrementsBy(1);
             modelBuilder.HasSequence("audit_seq").StartsAt(1).IncrementsBy(1);
 
-            // Configure entities
             modelBuilder.Entity<User>(entity =>
             {
                 entity.Property(e => e.UserId).HasDefaultValueSql("users_seq.NEXTVAL");

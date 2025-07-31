@@ -34,7 +34,6 @@ public class Order {
     @Column(name = "order_status", length = 20)
     private String orderStatus = "pending";
     
-    // Constructors
     public Order() {}
     
     public Order(Long customerId, String productName, Integer quantity, BigDecimal unitPrice, String orderStatus) {
@@ -47,7 +46,6 @@ public class Order {
         this.orderDate = LocalDateTime.now();
     }
     
-    // Getters and Setters
     public Long getOrderId() {
         return orderId;
     }

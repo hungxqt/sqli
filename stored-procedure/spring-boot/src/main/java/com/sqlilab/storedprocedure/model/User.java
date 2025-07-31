@@ -30,9 +30,8 @@ public class User {
     @Column(name = "created_date")
     private LocalDateTime createdDate;
     
-    // Constructors
     public User() {}
-    
+
     public User(String username, String email, String password, String userRole, String department) {
         this.username = username;
         this.email = email;
@@ -42,7 +41,6 @@ public class User {
         this.createdDate = LocalDateTime.now();
     }
     
-    // Getters and Setters
     public Long getUserId() {
         return userId;
     }
