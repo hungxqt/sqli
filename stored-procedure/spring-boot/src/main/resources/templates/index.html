@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CompanyApp User Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { padding-top: 20px; }
+        .feature-card { margin-bottom: 20px; }
+        .primary-badge { background-color: #007bff; }
+        .secure-badge { background-color: #28a745; }
+        .code-example { background-color: #f8f9fa; padding: 15px; border-left: 4px solid #007bff; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center mb-4">CompanyApp User Management System</h1>
+                <p class="lead text-center">Enterprise user management and order processing platform</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card feature-card">
+                    <div class="card-header">
+                        <h5>User Search</h5>
+                        <span class="badge primary-badge">FEATURE</span>
+                    </div>
+                    <div class="card-body">
+                        <p>Search for users by username or email address.</p>
+                        <button class="btn btn-primary" onclick="showFeature('users')">Use Feature</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card feature-card">
+                    <div class="card-header">
+                        <h5>Order Management</h5>
+                        <span class="badge primary-badge">FEATURE</span>
+                    </div>
+                    <div class="card-body">
+                        <p>View customer orders and order history.</p>
+                        <button class="btn btn-primary" onclick="showFeature('orders')">Use Feature</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card feature-card">
+                    <div class="card-header">
+                        <h5>Access Control</h5>
+                        <span class="badge primary-badge">FEATURE</span>
+                    </div>
+                    <div class="card-body">
+                        <p>Validate user access permissions and roles.</p>
+                        <button class="btn btn-primary" onclick="showFeature('access')">Use Feature</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feature Interface -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Feature Interface</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="featureInterface" style="display: none;">
+                            <!-- Dynamic content will be loaded here -->
+                        </div>
+                        <div id="results" class="mt-3" style="display: none;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Secure Examples</h5>
+                        <span class="badge secure-badge">SECURE</span>
+                    </div>
+                    <div class="card-body">
+                        <p>View secure implementations that properly handle user input and prevent SQL injection.</p>
+                        <a href="/secure" class="btn btn-success">View Secure Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="alert alert-info">
+                    <strong>ℹ️ Enterprise Application:</strong> This is a production-like user management system 
+                    with user search, order management, and access control features.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function showFeature(feature) {
+            const featureInterface = document.getElementById('featureInterface');
+            const results = document.getElementById('results');
+            
+            results.style.display = 'none';
+            
+            let html = '';
+            
+            switch(feature) {
+                case 'users':
+                    html = `
+                        <h6>User Search</h6>
+                        <form onsubmit="submitRequest(event, '/api/users/search')">
+                            <div class="mb-3">
+                                <label class="form-label">Search Term:</label>
+                                <input type="text" class="form-control" name="searchTerm" placeholder="Enter username or email to search">
+                                <small class="form-text text-muted">Search for users by username or email address</small>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Search Users</button>
+                            <button type="button" class="btn btn-secondary ms-2" onclick="submitSecure(event, '/api/users/search-secure')">Search (Secure)</button>
+                        </form>
+                    `;
+                    break;
+                case 'orders':
+                    html = `
+                        <h6>Customer Orders</h6>
+                        <form onsubmit="submitRequest(event, '/api/orders/customer')">
+                            <div class="mb-3">
+                                <label class="form-label">Customer ID:</label>
+                                <input type="text" class="form-control" name="customerId" placeholder="Enter customer ID">
+                                <small class="form-text text-muted">View all orders for a specific customer</small>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Get Orders</button>
+                            <button type="button" class="btn btn-secondary ms-2" onclick="submitSecure(event, '/api/orders/customer-secure')">Get Orders (Secure)</button>
+                        </form>
+                    `;
+                    break;
+                case 'access':
+                    html = `
+                        <h6>Access Validation</h6>
+                        <form onsubmit="submitRequest(event, '/api/access/validate')">
+                            <div class="mb-3">
+                                <label class="form-label">Username:</label>
+                                <input type="text" class="form-control" name="username" placeholder="Enter username">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Access Level:</label>
+                                <select class="form-control" name="accessLevel">
+                                    <option value="AND user_role = 'standard'">Standard</option>
+                                    <option value="AND user_role = 'manager'">Manager</option>
+                                    <option value="AND user_role = 'admin'">Admin</option>
+                                </select>
+                                <small class="form-text text-muted">Validate if user has the requested access level</small>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Validate Access</button>
+                        </form>
+                    `;
+                    break;
+            }
+            
+            featureInterface.innerHTML = html;
+            featureInterface.style.display = 'block';
+        }
+        
+        function submitRequest(event, endpoint) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const results = document.getElementById('results');
+            
+            fetch(endpoint, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                results.innerHTML = '<h6>Results:</h6><pre>' + JSON.stringify(data, null, 2) + '</pre>';
+                results.style.display = 'block';
+                results.scrollIntoView({ behavior: 'smooth' });
+            })
+            .catch(error => {
+                results.innerHTML = '<h6>Error:</h6><div class="alert alert-danger">' + error.message + '</div>';
+                results.style.display = 'block';
+            });
+        }
+
+        function submitSecure(event, endpoint) {
+            const formData = new FormData(event.target.parentNode);
+            const results = document.getElementById('results');
+            
+            fetch(endpoint, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                results.innerHTML = '<h6>Secure Results:</h6><pre>' + JSON.stringify(data, null, 2) + '</pre>';
+                results.style.display = 'block';
+                results.scrollIntoView({ behavior: 'smooth' });
+            })
+            .catch(error => {
+                results.innerHTML = '<h6>Error:</h6><div class="alert alert-danger">' + error.message + '</div>';
+                results.style.display = 'block';
+            });
+        }
+    </script>
+</body>
+</html>

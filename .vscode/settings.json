@@ -18,5 +18,10 @@
         "./dotnet", 
         "./php",
         "./js"
-    ]
+    ],
+    "java.project.sourcePaths": [
+        "stored-procedure/spring-boot/src/main/java",
+        "stored-procedure/spring-boot"
+    ],
+    "java.compile.nullAnalysis.mode": "automatic"
 }

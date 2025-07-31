@@ -1,0 +1,125 @@
+{
+  "Version": 1,
+  "Hash": "BamGQOivMOJogSo5XLD430R9ItjR8jwN1LcEdFQMBnc=",
+  "Source": "StoredProcedureSqli",
+  "BasePath": "_content/StoredProcedureSqli",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "StoredProcedureSqli\\wwwroot",
+      "Source": "StoredProcedureSqli",
+      "ContentRoot": "e:\\labs-build\\sqli\\stored-procedure\\dotnet\\wwwroot\\",
+      "BasePath": "_content/StoredProcedureSqli",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "e:\\labs-build\\sqli\\stored-procedure\\dotnet\\wwwroot\\index.html",
+      "SourceId": "StoredProcedureSqli",
+      "SourceType": "Discovered",
+      "ContentRoot": "e:\\labs-build\\sqli\\stored-procedure\\dotnet\\wwwroot\\",
+      "BasePath": "_content/StoredProcedureSqli",
+      "RelativePath": "index#[.{fingerprint}]?.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "em9w5lfn1j",
+      "Integrity": "tkG9ME+mIRA6OfLrRBRsAm1SfKZYMUmryh0iUZaBYpY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\index.html"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "index.em9w5lfn1j.html",
+      "AssetFile": "e:\\labs-build\\sqli\\stored-procedure\\dotnet\\wwwroot\\index.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "12769"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"tkG9ME+mIRA6OfLrRBRsAm1SfKZYMUmryh0iUZaBYpY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 30 Jul 2025 17:30:28 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "em9w5lfn1j"
+        },
+        {
+          "Name": "label",
+          "Value": "index.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-tkG9ME+mIRA6OfLrRBRsAm1SfKZYMUmryh0iUZaBYpY="
+        }
+      ]
+    },
+    {
+      "Route": "index.html",
+      "AssetFile": "e:\\labs-build\\sqli\\stored-procedure\\dotnet\\wwwroot\\index.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "12769"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"tkG9ME+mIRA6OfLrRBRsAm1SfKZYMUmryh0iUZaBYpY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 30 Jul 2025 17:30:28 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-tkG9ME+mIRA6OfLrRBRsAm1SfKZYMUmryh0iUZaBYpY="
+        }
+      ]
+    }
+  ]
+}
