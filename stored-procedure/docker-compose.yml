@@ -51,9 +51,11 @@ services:
     container_name: sqli_dotnet_app
     ports:
       - "5000:8080"
+      - "9004:9004"
     environment:
       - ConnectionStrings__DefaultConnection=Data Source=oracle-db:1521/XEPDB1;User Id=sqli_lab;Password=SqliLab123!;Connection Timeout=30;
       - ASPNETCORE_ENVIRONMENT=Development
+      - DOTNET_DEBUG=true
     depends_on:
       oracle-db:
         condition: service_healthy
