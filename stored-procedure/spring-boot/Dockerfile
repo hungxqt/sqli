@@ -16,8 +16,12 @@ COPY src ./src
 # Build the application
 RUN mvn clean package -DskipTests
 
-# Expose port
+# Expose ports
 EXPOSE 8080
+EXPOSE 9003
 
-# Run the application
-CMD ["java", "-jar", "target/stored-procedure-sqli-1.0.0.jar"]
+# Set default debug options (can be overridden by environment variable)
+ENV JAVA_DEBUG_OPTS=""
+
+# Run the application with conditional debug support
+CMD java $JAVA_DEBUG_OPTS -jar target/stored-procedure-sqli-1.0.0.jar

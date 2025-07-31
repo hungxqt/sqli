@@ -30,10 +30,12 @@ services:
     container_name: sqli_spring_boot
     ports:
       - "8080:8080"
+      - "9003:9003"
     environment:
       - SPRING_DATASOURCE_URL=jdbc:oracle:thin:@oracle-db:1521/XEPDB1
       - SPRING_DATASOURCE_USERNAME=sqli_lab
       - SPRING_DATASOURCE_PASSWORD=SqliLab123!
+      - JAVA_DEBUG_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:9003
     depends_on:
       oracle-db:
         condition: service_healthy
