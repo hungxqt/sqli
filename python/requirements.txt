@@ -1,4 +1,4 @@
-Django==5.2.4
+Django==5.2.9
 mysqlclient==2.2.4
 debugpy==1.8.5
 PyMySQL==1.1.1
